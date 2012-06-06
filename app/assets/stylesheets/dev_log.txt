@@ -1,9 +1,9 @@
 = Meeting 06/02 =
-* Search 'clicking twice'
+* [Fixed] Search 'clicking twice'
 * Update latest Preview for new post
 * Please log in or sign up for 'No Results'
 * Back/Forth Browser
-* 'No Related Areas' unnecessary
+* [Fixed] 'No Related Areas' unnecessary
 * related areas too long
 
 = Meeting 05/23 =

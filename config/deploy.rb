@@ -3,7 +3,7 @@ set :domain, 'dediced.com'
 set :application, "dediced"
 
 set :shared_assets, %w{public/systems}
-set :repository,  "root@dediced.com:git/#{application}.git"
+set :repository,  "git@github.com:cvhu/#{application}.git"
 set :deploy_to, "/srv/www/#{domain}"
 
 role :web, domain

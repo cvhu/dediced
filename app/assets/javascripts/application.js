@@ -2884,6 +2884,7 @@ jQuery.fn.sendShareEmail = function(yum_id){
 
 		
 function searchFormView(){
+	console.log('searchFormView');
 	$('#search-field').removeClass('dropdown-search').hide();
 	$('#logo').hide();			
 	$('#search-submit').hide();
@@ -2898,19 +2899,22 @@ function searchFormView(){
 
 }
 
-function searchResultsView(query){			
+function searchResultsView(query){	
+	console.log('searchResultsView');		
 	$('#search-div').remove();
 	$('#logo').fadeIn();
-	field = $('#search-field').fadeIn();
+	var field = $('#search-field').fadeIn();
 	var submit = $('#search-submit').fadeIn();
 	$('#menu-sidebar').fadeIn();
 	var wrapper = $('<div id="content-wrapper"></div>').appendTo($('#content'));
 	var results = $('<div id="stream-wrapper"></div>').appendTo(wrapper);
 	$(field).focus().val(query);
 	$(field).searchLive();
+	
 }
 
 function searchSetup(field, submit){
+	console.log('searchSetup');
 	$(field).keyup(function(){			
 		var query = $(field).val();
 		$.ajax({
@@ -2922,8 +2926,10 @@ function searchSetup(field, submit){
 				$(submit).addClass('search-icon').removeClass('loading-icon');
 				$(field).autocomplete({source:data});
 				
+				$(submit).attr('href','/search?q='+$(field).val().split(/\s+/).join('+'));
+				
 				$(field).bind('click change keyup blur focus', function(){
-					$(submit).attr('href','/search?q='+$(this).val().split(/\s+/).join('+'));
+					$(submit).attr('href','/search?q='+$(field).val().split(/\s+/).join('+'));
 				});
 				
 				$(".ui-autocomplete").click(function(e){				
@@ -2958,6 +2964,7 @@ function searchSetup(field, submit){
 }
 
 jQuery.fn.searchLive = function(){
+	console.log('searchLive');
 	var field = this;
 	var query = $(field).val();
 	var results = $('#stream-wrapper');			
@@ -2985,14 +2992,16 @@ jQuery.fn.searchLive = function(){
 					var areas = $('<div id="search-relevant-areas"></div>').appendTo(right);
 					var related_areas_title = $('<div id="search-related-areas-title"></div>').appendTo(areas);					
 					if (data.relevant_areas.length == 0){
-						$(related_areas_title).html('No related areas for <div class="search-query-text">'+query+'</div>');
+						// $(related_areas_title).html('No related areas for <div class="search-query-text">'+query+'</div>');
 					}else{
 						$(related_areas_title).html('Related areas to <div class="search-query-text">'+query+'</div>');
 						$.each(data.relevant_areas, function(i,v){
 							var area = $('<a class="search-relevant-area"></a>').paintScore(v.score).attr('score', v.score).appendTo(areas).attr('href', '/area/'+v.area);
 							$('<div class="search-relevant-area-name"></div>').html(v.area).appendTo(area);
 						})	
-					}		
+					}
+					var submit = $('#search-submit');
+					searchSetup(field, submit);
 				
 					
 				}
