@@ -1,0 +1,63 @@
+
+<div class="yumlet" id="<%=h yum.id%>">
+	<div class="yum_content">
+	    <div class="yum_content_name">
+			<%= yum.name%>
+		</div>
+		<% unless yum.url == ''%>
+			<div class="yum_content_url link">
+				<%= link_to "page link", yum.url%>
+			</div>
+		<% end %>
+		<%  unless yum.value.nil? %>
+			<div class="yum_content_price">
+				<%="(#{(yum.value)})"%>
+			</div>
+		<% end %>
+		<% unless yum.tags.empty? %>
+			<div class="yum_content_tags">
+				<% yum.tags.each do |tag|%>
+					<div class="yum_content_tag">
+						<%= tag.name%>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+
+		<% unless yum.address.nil? %>	
+			<% unless Geocoder.search(yum.address).empty? %>
+				<div class="yum_content_city">
+					<%= link_to "@#{Geocoder.search(yum.address)[0].city}", show_locations_path(yum.address)%>		
+				</div>
+			<% end %>
+		<% end %>				
+
+	</div>
+
+	<div class="yum_image">
+		<div class="thumbnail150">
+			<%= image_tag yum.img.uri, :style => "#{yum.img.css(150)}"%>
+		</div>
+	</div>
+
+	<div class="yum_review">
+		<div class="yum_review_user">
+			<%= render :partial => "users/user", :object => yum.user%>
+		</div>
+		<div class="yum_review_content"><%= yum.review %><span class="yum_review_timestamp"><%= "(#{yum.created_at} ago)" %></span></div>				
+
+		<div class="yum_review_comments link"> 
+			<%= link_to "comments(#{yum.comments.count})", yum_comments_url(yum.id), :class=> "toggle_comments"%> 
+			<div class="comments"></div>
+		</div>
+		<% if yum.user != current_user %>
+			<span class="yum_review_rating">
+				<% if yum.ratings.where(:user_id => current_user.id).empty? %>
+					<%= link_to "Like", yum_rating_url(yum.id, 1), :class=>"like"%> or <%= link_to "Dislike", yum_rating_url(yum.id, 0), :class=> "dislike" %>
+				<% else %>
+					<%= "#{yum.ratings.where(:value => 1).count} out of #{yum.ratings.count} people liked it" %>
+				<% end %>
+			</span>
+		<% end %>
+	</div>
+</div>

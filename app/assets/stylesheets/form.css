@@ -1,0 +1,670 @@
+input, textarea{
+/*	border-radius: 5px;*/
+	padding: 5px;
+	color: #111;
+	font-size: 115%;
+}
+
+.button{
+	padding: 5px;
+	text-decoration: none;
+	border-radius: 5px;
+	background: #777;
+	color: white;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	border: none;
+/*	float:right;*/
+}
+
+
+.button:hover{
+	opacity:0.5;
+	}
+
+
+
+
+/*============ sign_up_table ===============*/
+#sign_up_wrapper{
+	position: relative;
+	left: 50%;
+	float: left;
+	background: none;
+}
+
+#sign_up{
+	border: 3px solid #aaa;
+	border-radius: 10px;
+	width: 500px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;	
+	padding: 10px;
+	background: white;
+/*	background: white;*/
+	position: relative;
+	left: -50%;
+	float: left;
+}
+
+#dialog_title{
+	font-size: 300%;
+	font-weight: bold;
+	color: #555;
+	margin: 10px;
+}
+
+#sign_up_table{
+	padding: 10px;
+	margin: 5px;
+	font-size: 125%;
+}
+
+
+#sign_up_table th{
+	width: 200px;
+	vertical-align: top;
+	padding: 7px;
+	margin: 6px;
+	text-align: right;
+	color: #555;
+}
+
+#sign_up_table td{
+	width: 250px;
+	margin: 0px;
+	padding: 1px;
+}
+
+#sign_up_table input{
+	width: 250px;
+	border: 1px solid #aaa;
+}
+
+
+/*============ new_yum_table ===============*/
+
+
+.form_table{
+	padding: 10px;
+	margin: 5px;
+	font-size: 125%;
+	background: white;
+	width: 800px;
+}
+
+
+.form_table th{
+	width: 120px;
+	vertical-align: top;
+	padding: 7px;
+	margin: 6px;
+	text-align: right;
+	color: #555;
+}
+
+.form_table td{
+	margin: 0px;
+	padding: 1px;
+}
+
+/*============ log_in_table ===============*/
+
+
+.cancel{
+	color: #aaa;
+}
+
+#log_in_wrapper{
+	position: relative;
+	left: 50%;
+	float: left;
+	background: none;
+}
+
+#log_in{
+	border: 3px solid #aaa;
+	border-radius: 10px;
+	width: 300px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;	
+	padding: 10px;
+	background: white;
+/*	background: white;*/
+	position: relative;
+	left: -50%;
+	float: left;
+}
+
+
+#sign_up_wrapper{
+	position: relative;
+	left: 50%;
+	float: left;
+	background: none;
+}
+
+#sign_up_form{
+	border: 3px solid #aaa;
+	border-radius: 10px;
+	width: 300px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;	
+	padding: 10px;
+	background: white;
+	position: relative;
+	left: -50%;
+	float: left;
+}
+
+#dialog_title{
+	font-size: 150%;
+	color: #555;
+	margin: 10px;
+}
+
+
+#log_in_table{
+	padding: 10px;
+	margin: 5px;
+	font-size: 125%;
+}
+
+
+#log_in_table th{
+	width: 50px;
+	vertical-align: top;
+	padding: 7px;
+	margin: 6px;
+	text-align: right;
+	color: #555;
+}
+
+#log_in_table td{
+	margin: 0px;
+	padding: 1px;
+}
+
+#log_in_table input{
+	width: 200px;
+	border: 1px solid #aaa;
+}
+
+#log_in_submit_button{
+	background: #08f;
+	color: white;
+	padding: 5px;
+	width: 100%;
+	margin: 0px;	
+}
+
+
+/*==========subscribe_form*/
+
+#sign_up_button{
+	display: inline-block;
+	background: rgb(51, 204, 0);
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;	
+}
+
+#sign_up_button:hover{
+	background: rgb(51, 254, 0);;
+}
+
+#sign_up_button a{	
+	color: #fff;
+	opacity: 1;
+}
+
+#sign_up_form{
+	width: 250px;
+	float: right;
+	border-radius: 10px;
+	background: #eee;
+	border: 1px solid #bbb;
+	margin-top: 100px;
+	margin-left: 50px;
+	margin-bottom: 100px;
+	padding: 7px;
+}
+
+#preuser_email{
+	width: 90%;
+	border: 1px solid #bbb;
+	margin: 5px;
+	display: block;
+	clear:both;
+
+}
+
+#preuser_location{
+	border: 1px solid #bbb;
+	margin: 5px;
+	display: block;
+	clear:both;
+}
+
+#preuser_submit_button{
+	float: right;
+	font-size: 15px;
+	border-radius: 5px;
+	background: #5c0;
+	color: white;
+	padding: 5px;
+	margin: 5px;
+}
+
+
+#load_preuser_title{
+	font-size: 150%;
+	padding: 5px;
+	clear: both;
+}
+
+#laod_preuser_note{
+	margin: 15px;
+	padding: 15px;
+	font-size: 100%;
+	clear: both;
+}
+
+#announcements{
+	z-index: 999;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	background: #bbb;
+	text-align: center;
+	display: block;
+	color: white;
+	padding: 5px;
+	margin-bottom: 20px;
+	font-size: 200%;
+}
+
+/*==========search_form==============*/
+
+#search_form{
+	float:left;
+	padding: 10px 20px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#search_content{
+	float:left;
+	padding-left: 5px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+/*	border-radius: 7px 0px 0px 7px;*/
+/*	border-left: 3px solid #aaa;
+	border-top: 3px solid #aaa;
+	border-bottom: 3px solid #aaa;*/
+/*	border-right: 3px solid #f80;*/
+	border: 1px solid #aaa;
+	width: 600px;
+	height: 20px;
+	margin: 0px;
+}
+
+#search_button{
+	text-align: center;
+	width: 50px;
+	margin-left: 5px;
+	padding: 5px;
+	float:left;
+	border-radius: 3px;
+	color: white;
+	border: none;
+	background: #f80;
+}
+
+
+/*===============comment_form=================*/
+
+.comment_form{
+	clear: both;
+	margin-top: 10px;
+	padding: 10px;
+	background: #eee;
+	width: 100%;
+}
+
+#comment_content{
+	width: 88%;
+	margin: 0px;
+	padding: 0px;
+	border: 1.5px solid #bbb;
+}
+
+#comment_submit_button{
+	margin: 0px;
+	padding: 2px;
+	font-size: 12px;
+	background: #555;
+	color: #fff;
+	border: none;
+}
+
+/*
+ **************** add_new form ****************/
+#add_new_wrapper{
+	position: relative;
+	float: left;
+	left: 50%;
+	background: none;
+}
+
+#add_new{
+	background: #fff;
+	position: relative;
+	float: left;
+	left: -50%;
+	border-radius: 3px;
+	border: solid 3px #555;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+/*	width: 600px;*/
+	padding: 20px;
+}
+
+#add_new_instruction{
+	clear: both;
+	float: left;
+	font-size: 125%;
+	font-weight: bold;
+	width: 100%;
+	color: #555;
+	margin-bottom: 10px;
+}
+
+#add_new_form{
+	float:left;	
+	padding-left: 10px;
+/*	border: solid 2px #aaa;*/
+	margin-left: 20px;
+	padding: 10px;
+	width: 300px;
+}
+
+#add_new_form > input, textarea{
+	float:left;
+	margin: 5px;
+	padding: 5px;
+	width: 270px;
+	border: solid 1px #aaa;
+}
+
+.input_hint{
+	clear: both;
+	float: left;
+	font-size: 75%;
+	color: #777;
+	margin-top: -2px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding: 0px;
+	text-align: left;
+}
+
+.submit_hint{
+	clear: both;
+	float: right;
+	font-size: 100%;
+	color: #777;
+	margin-top: -1px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding: 0px;
+	text-align: left;
+}
+
+
+#yum_name{
+	width: ;
+}
+
+#yum_url{
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 80%;
+	border: solid 2px #aaa;
+}
+
+#yum_go_button{
+	border-radius: 3px;
+	float: left;
+	font-size: 150%;
+	margin: 5px;
+	padding: 5px;
+	background: #08f;
+	color: #fff;
+}
+
+#yum_next_button{
+	border-radius: 3px;
+	float: left;
+	font-size: 150%;
+	margin: 5px;
+	padding: 5px;
+	background: #0f5;
+	color: #fff;
+}
+
+#yum_thumbnail{
+	border: solid 2px #aaa;
+	border-radius: 1px;
+	float: left;
+	margin-left: 10px;
+}
+
+#yum_submit_button{
+	border-radius: 3px;
+	clear: both;
+	float: left;
+	font-size: 150%;
+	margin: 5px;
+	padding: 5px;
+	background: #0f5;
+	color: #fff;
+}
+
+
+#yum_url_preview{
+	float:left;
+}
+
+#selected_img{
+	margin: 30px;
+}
+
+/*
+ **************** editing form ****************/
+.focus{
+	background: yellow;
+}
+
+.focus{
+	background: yellow;
+}
+
+
+
+.hint{
+	font-weight: bold;
+	opacity: .75;
+}
+
+.hint .good{
+	color: green;
+}
+
+.hint .bad{
+	color: red;
+}
+
+.hint .error{
+	color: yellow;
+}
+
+.instruction{
+	color: #000;
+	font-size: 150%;
+	padding: 5px;
+	margin-bottom: 10px;
+	float: left;
+}
+
+.optional span{
+	padding: 5px;
+	font-size: 65%;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.show{
+	color: #fff;
+	background: #05f;
+}
+
+.hide{
+	color: #fff;
+	background: #f50;
+}
+
+/*
+ ************ select tabs */
+
+#pdp_tabs{
+ 	border-radius: 5px 5px 0px 0px;
+	width: 810px;
+	float:left;
+}
+
+
+
+#selectable{
+	font-weight: bold;
+	float: left;
+	list-style-type: none;
+	margin: 0px;
+	margin-top: 5px;
+	margin-left: 0px;
+	padding: 0px;
+}
+
+#selectable li{
+ 	border-radius: 5px 5px 0px 0px;
+	font-size: 125%;
+	padding: 5px;
+	margin: 5px;
+	margin-bottom: 0px;
+	float: left;
+}
+
+.current{
+	background: white;
+	opacity: 1.0;
+}
+
+
+#selectable a{
+	text-decoration: none;
+	color: white;
+}
+
+#selectable .current a{
+	color: #555;
+}
+
+.prepopulate{
+	background: #fff;
+	color: #aaa;
+}
+
+.tag_hints{
+	padding-left: 10px;
+	color: #555;
+	font-size: 70%;
+}
+
+.button_hints{
+	padding-left: 10px;
+	color: #f10;
+
+}
+
+
+input[type=submit]{
+}
+
+input[type=submit]:hover{
+	box-shadow: 0 0 15px rgba(0,100,255,1);	
+	opacity: 1;
+}
+
+input[disabled=disabled]{
+	opacity: 0.5;
+	background: #333;
+}
+
+input[disabled=disabled]:hover{
+	opacity: 0.5;
+	background: #333;	
+}
+
+
+#pre_users{
+	width: 700px;
+	border: 2px solid #333;
+	border-radius: 10px;
+	margin: 0 auto 0 auto;
+	padding: 30px;
+}
+
+#pre_users td{
+	padding: 5px;
+}
+
+#pre_users a{
+	font-weight: bold;
+	color: #08f;
+}
+
+#pre_users tr:hover td{
+	background: #ffa;
+}
+
+#pre_users tr:nth-child(even){
+	background: #ddd;
+}
+
+#forgot_password_email{
+	float: left;	
+	border: solid 2px #bbb;
+	margin: 10px;
+	padding: 5px;
+	font-size: 150%;
+	width: 325px;
+}
+
+#forgot_password_submit_button{	
+	position: relative;
+	top: 15px;
+	font-size: 150%;
+	margin: 10px;
+	background: #777;
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+}

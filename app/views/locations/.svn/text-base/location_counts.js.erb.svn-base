@@ -1,0 +1,6 @@
+var counts = $("<%= escape_javascript(render :partial => 'locations/counts', :locals => {:maps => count_location(@pre_users)}) %>");
+$('#top_locations').html(counts);
+$(counts)
+	.hide()
+	.fadeIn();
+	

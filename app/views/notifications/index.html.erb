@@ -1,0 +1,21 @@
+<% title "Notifications"%>
+<%= render :partial => 'users/user', :object => current_user%>
+
+
+<div class="notifications">
+	<% if @notification_dates.empty?%>
+		You have no new notifications
+	<% else %>
+		<ul id="toolbar">
+			<li><%= link_to "clear all", clean_notifications_path %></li>
+		</ul>
+		<ul>
+			<% @notification_dates.each do |date, notifications| %>
+				<span class="date"> <%= date%> </span>
+				<% notifications.each do |notification|%>
+					<li> <%= render :partial => 'notification', :object => notification %> </li>
+				<% end %>
+			<% end %>
+		</ul>
+	<% end %>
+</div>

@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>dediced.com- decided so you are</title>
+  <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="en-US" />	
+  <%= stylesheet_link_tag "main", "model", "form", "message", "token-input-dealicious", "imageselection","jquery.Jcrop"%>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+
+  <%= javascript_include_tag "application","jquery.tokeninput", "imageselection", "jquery.validate", "jquery.hoverIntent", "jquery.Jcrop.min" %>  
+  <%= csrf_meta_tag %>
+  <%= yield(:head)%>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26803309-1']);
+  _gaq.push(['_setDomainName', '.dediced.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+	
+	<div id="container"> 
+		<div id="header" class="fixed_top">
+			<% if current_user %>
+				<div id="user_bar">
+					<ul id="toolbar">
+						<li> <a href="#" id="add_new_button"> + new post</a> </li>
+						<li> <div id="search_bar"><input class="text" id="search_field" name="search" size="20" type="text"/>
+						<a href="#" id="search_submit"><img height="15px" src="/images/search_icon.png"/> </a></div></li>
+						<li> <%= link_to "shake", shake_path%> </li>
+						<li> <%= link_to "latest", yums_path%> </li>
+						<!-- <li>  link_to "elites", elites_path </li> -->
+						<li>
+								<%= link_to current_user.name, user_path(current_user), :id=> 'user_profile', :user_id=> current_user.id%>
+								<%= image_tag current_user.gravatar(25), :class=>'gravatar25'%>
+						
+						</li>
+						<li><%= link_to "[ log out ]", log_out_path %></li>
+						
+						<% if current_user.notifications.where(:viewed => false).count != 0 %>
+							<li id="news">
+								<%= link_to "#{current_user.notifications.where(:viewed => false).count} news", notifications_path %>
+							</li>
+						<% end %>
+						
+					</ul>			
+				</div>
+			<% end %>
+			<div id="logo">
+				<a href="<%= root_url %>">
+					<img src="/images/dediced.png" alt="dediced.com"/>
+				</a> 
+			</div>
+			<div id="header_title"> <%= yield(:header_title)%><div id="header_subtitle"> <%= yield(:header_subtitle)%></div></div>
+			
+			
+			
+		</div> 
+		
+
+
+
+
+		<% unless flash.empty?%>
+			<div id="flash" class="homepage"> 
+				<% flash.each do |name, msg| %>
+			        	<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		 		<% end %>
+			</div>
+		<% end %>
+		
+	
+
+		<div id="content">
+			<%= content_tag :div, yield(:title), :id=> "title" if show_title? %>
+			<%= yield %>
+		</div>
+		<div id="footer">
+				<div id="footer_items">
+					<ul>
+						<li> <a class="text" href="http://blog.dediced.com/?page_id=17"> about </a>&#8226; </li>
+						<li> <a class="text" href="http://blog.dediced.com/">blog</a> &#8226; </li>
+						<li> <a class="text" href="mailto:info@dediced.com">contact</a> </li>
+					</ul>
+				</div>
+				
+				<div id="footer_signature"> 
+					.Dediced LLC &copy 2011-2012
+				</div> 
+				
+		</div> 
+		
+	</div> 
+
+	<div id="overlay">
+		<div id="blanket"></div>
+	</div>
+
+
+	
+
+	<div id="debugger">
+	</div>
+	
+	
+	<div style="display: none;">
+		
+		<!-- 						<div id="add_new_wrapper">
+									<div id="add_new">
+										<a href="#" class="cancel"> [x]</a>
+										<div id="add_new_instruction">
+											Add a new post!
+										</div>
+										<input id="yum_url" name="yum[url]" size="40" type="text" />
+										<a href="#" id="yum_go_button"> go </a>
+										<div id="yum_url_preview">
+										</div>
+										<div id="add_new_form" style="display:none" class="form">
+											<div id="yum_thumbnail"></div>
+											<input id="yum_name" name="yum[name]" size="40" type="text" />
+											<input data-pre="[]" id="yum_tag_tokens" name="yum[tag_tokens]" size="30" type="text" />
+											<div id="map"></div>
+											<label for="yum_review">
+											<textarea cols="30" id="yum_review" name="yum[review]" rows="8"></textarea>
+											<a href="#" id="yum_submit_button" class="submit_button"> submit </a>
+										</div>
+										
+
+									</div>
+								</div> -->
+		<div id="add_new_wrapper"><div id="add_new"></div></div>
+		<div id="yum_wrapper"></div>
+		<div id="dialog_wrapper"></div>
+		<div style="display:none;">
+			<input id="img_x" type="text"/>
+			<input id="img_y" type="text"/>
+			<input id="img_w" type="text"/>
+			<input id="img_h" type="text"/>
+		</div>
+		<!-- <div class="yum_wrapper">
+			<div class="yum">
+				<a href="#" class="cancel"> [x]</a>
+				<div class="yum_content">
+				    <div class="yum_content_name">
+					</div>
+					<div class="yum_content_url link">		
+					</div>
+					<div class="yum_content_tags">
+						<div class="yum_content_tag template">
+						</div>
+					</div>
+				</div>
+				<div class="left250">
+					<div class="yum_image">
+						<div class="full250">
+
+						</div>
+					</div>
+					<div class="stats"></div>
+				</div>
+				<div class="right500">
+					<div class="yum_review">
+						<div class="yum_review_user">
+							<div class="user_badge">
+								<div class="thumbnail50">
+								</div>
+								<div class="user_info">
+								</div>
+							</div>
+						</div>
+						<div class="yum_review_content">
+							<span class="yum_review_timestamp"></span>
+						</div>
+						<div class="comments">				
+							<div class="comment template">
+								<div class="comment_user">
+									<div class="user_badge">
+										<div class="thumbnail30">								
+										</div>
+										<div class="user_info">
+										</div>
+									</div>
+								</div>
+
+								<div class="comment_content">	
+									<span class="comment_timestamp"></span>
+								</div> 
+								<div class="comment_actions">
+									<a href="#" class="like_comment">like</a>&#8226; <a href="#" class="hide_comment">hide</a>
+								</div>
+								<div class="comment_stats">
+									<span class="total_comment_like"></span>:<span class="total_comment_hide"></span>
+								</div>
+							</div>
+
+							<div class="comment_form">
+								<input id="comment_content" type="text"/>
+								<a href="#" id="comment_submit_button"> submit </a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+	<div id="float_right">
+		<a href="#feedback" id="feedback">feedback</a>
+		<div id="social_media">
+			<a href="https://plus.google.com/102627012757334564024" target="_blank"> <img src="/images/dediced_gplus.png" height="30px"/></a>
+			<a href="https://www.facebook.com/dediced" target="_blank"> <img src="/images/dediced_facebook.png" height="30px"/></a>
+			<a href="https://twitter.com/DedicedLLC" target="_blank"> <img src="/images/dediced_twitter.png" height="30px"/></a>
+		</div>
+	</div>
+</body>
+</html>
+
+
+

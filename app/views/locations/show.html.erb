@@ -1,0 +1,6 @@
+<div id="show_location">
+	<% title "#{@address}"%>
+	<div class="map">
+		<%= image_tag "http://maps.google.com/maps/api/staticmap?size=700x500&sensor=false&zoom=12&markers=#{@latitude}%2C#{@longitude}" %>
+	</div>
+</div>

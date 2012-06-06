@@ -1,0 +1,17 @@
+<div id="message_box">
+	<div id="message_content">		
+		<div id="message_title">
+			Thank you for subscribing!
+		</div>
+		<p>
+		  <b>location:</b>
+		  <%= @pre_user.address %>
+		</p>
+
+		<p>
+		  <b>e-mail:</b>
+		  <%= @pre_user.email %>
+		</p>
+	</div>
+</div>
+

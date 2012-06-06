@@ -1,0 +1,11 @@
+var rating = $('#<%= @rating.yum_id %>').find('.rating');
+rating.fadeOut();
+<% if @rating.value ==1 %>
+	rating
+		.html('you liked it')
+		.fadeIn();
+<% else %>
+	rating
+		.html('you disliked it')
+		.fadeIn();
+<% end %>

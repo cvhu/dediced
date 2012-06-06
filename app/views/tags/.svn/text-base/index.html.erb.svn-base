@@ -1,0 +1,9 @@
+<% content_for :top_header do%>
+ areas
+<% end %>
+
+<% @tags.each do |tag| %>
+	<% unless tag.tag_yums == [] %> 
+		<a href="/area/<%=tag.name%>" style="font-size: <%= tag.tag_yums.count*50%>%;" class="passive_link"> <%= tag.name%></a>
+	<% end %>
+<% end %>

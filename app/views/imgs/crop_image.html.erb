@@ -1,0 +1,80 @@
+<% title "Crop Image"%>
+
+<% content_for(:head) do%>
+	<%= javascript_include_tag "jquery.Jcrop.min"%>
+	<%= stylesheet_link_tag "jquery.Jcrop"%>
+	<script type="text/javascript" charset="utf-8">
+
+    jQuery(function($){
+
+      // Create variables (in this scope) to hold the API and image size
+      var jcrop_api, boundx, boundy;
+      
+      $('#target').Jcrop({
+		setSelect: [ 0, 0, 100,100 ],
+        onChange: updatePreview, 
+        onSelect: updatePreview,
+        onRelease:  clearCoords,
+        aspectRatio: 1
+
+      },function(){
+        // Use the API to get the real image size
+        var bounds = this.getBounds();
+        boundx = bounds[0];
+        boundy = bounds[1];
+        // Store the API in the jcrop_api variable
+        jcrop_api = this;
+      });
+
+      function updatePreview(c)
+      {
+   		
+        if (parseInt(c.w) > 0)
+        {
+          var rx = 100 / c.w;
+          var ry = 100 / c.h;
+
+          $('#preview').css({
+            width: Math.round(rx * boundx) + 'px',
+            height: Math.round(ry * boundy) + 'px',
+            marginLeft: '-' + Math.round(rx * c.x) + 'px',
+            marginTop: '-' + Math.round(ry * c.y) + 'px'
+          });
+		$('.x').val(Math.round(rx * c.x));
+      	$('.y').val(Math.round(ry * c.y));
+      	$('.w').val(Math.round(rx * boundx));
+      	$('.h').val(Math.round(ry * boundy));
+
+        }
+      };
+
+    });
+
+    function clearCoords()
+    {
+      $('#coords input').val('');
+      $('#h').css({color:'red'});
+      window.setTimeout(function(){
+        $('#h').css({color:'inherit'});
+      },500);
+    };
+
+
+	</script>
+<% end %>
+
+
+<div class="thumbnail100">
+	<%= image_tag @img_url, :id => "preview"%>
+	<span class="caption"> thumbnail preview </span>
+</div>
+<div style="float:left">
+	<% form_tag cropped_image_url(@img.id) do%>
+		<%= image_tag @img_url, :id => "target"%> <%= hidden_field_tag "img[uri]", @img_url%> 
+			<%=text_field_tag "img[x]", nil, :class => "x"%>
+			<%=text_field_tag "img[y]", nil, :class => "y"%>
+			<%=text_field_tag "img[w]", nil, :class => "w"%>
+			<%=text_field_tag "img[h]", nil, :class => "h"%>
+		<%= submit_tag "crop", :class => "button" %>
+	<% end %>
+</div>

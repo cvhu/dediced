@@ -1,0 +1,44 @@
+
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var current_page = 1;
+			var load_more = $('<div id="load_more">loading... </div>');
+			$("#news_results").append(load_more).loadSearch('*',current_page);
+		});
+		jQuery.fn.loadSearch = function(q, current_page){
+			var wrapper = this;
+			var load_icon = $(wrapper).find("#load_more");
+			$.ajax({
+				url: '/yums_search.json?q='+q+'&current_page='+current_page,
+				beforeSend: function(){
+					$(load_icon).addClass('center_progress');
+				},
+				success: function(data){
+					$(load_icon).remove().fadeOut();
+					for (var i = 0; i < 16; i++){
+						$(wrapper).loadDefaultYumlet(data.apis[i]);
+					};
+					if (data.more_pages == 1){
+						$(wrapper).loadMoreSearch(q, current_page);
+					}
+				}
+			});
+		}		
+		
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	latest
+<% end %>
+
+<% content_for :header_subtitle do%>
+	what's new?
+<% end %>
+
+
+<div id="subcontent">
+	<div id="news_results">
+	</div>
+</div>

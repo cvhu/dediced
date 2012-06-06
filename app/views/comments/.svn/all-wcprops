@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/dediced/!svn/ver/63/trunk/app/views/comments
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/dediced/!svn/ver/57/trunk/app/views/comments/new.html.erb
+END
+create.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/dediced/!svn/ver/35/trunk/app/views/comments/create.js.erb
+END
+_comment.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/dediced/!svn/ver/56/trunk/app/views/comments/_comment.html.erb
+END
+new.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dediced/!svn/ver/44/trunk/app/views/comments/new.js.erb
+END
+_comment_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dediced/!svn/ver/56/trunk/app/views/comments/_comment_form.html.erb
+END

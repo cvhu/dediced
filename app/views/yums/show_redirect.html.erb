@@ -1,0 +1,17 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			window.location.replace($("#redirect_url").attr('href'));	
+		})
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	redirecting page
+<% end %>
+
+<% content_for :header_subtitle do%>
+	<%=@yum.url%>
+<% end %>
+
+If the page doesn't redirect, please click <%= link_to "here", @yum.url, :id => "redirect_url"%>.

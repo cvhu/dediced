@@ -1,0 +1,16 @@
+<% title "add an image"%>
+
+<%= form_tag crop_image_path(@img.id), {:multipart => true} do%>
+	<% if @url_images != [] && @url_images != nil%>
+	<%= @uri%>
+	 	<%= render :partial => 'url_image', :locals => {:url => @uri, :url_images => @url_images}%>
+	<% end %>
+	<%= render :partial => 'upload_image' %>
+	
+	<span class="actions">
+	   <%= submit_tag 'continue', :class => "button", :name => "crop_image"%>
+  	</span>
+	
+<% end %>
+
+<%= link_to "save without image", root_url %>

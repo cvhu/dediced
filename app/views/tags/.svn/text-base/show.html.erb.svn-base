@@ -1,0 +1,76 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var tag_name = $('#tag_name');
+			if ($("#no_results").length==0){
+				var current_page = 1;
+				var load_more = $('<div id="load_more">loading... </div>');								
+				$("#my_yums").append(load_more).loadAreaShake($(tag_name).text(), current_page);
+				$('#area_top_five').loadAreaTopFive($(tag_name).text());	
+			}
+		})
+		
+		jQuery.fn.loadAreaShake = function(area_name, current_page){
+			var wrapper = this;
+			var load_icon = $(wrapper).find("#load_more");
+			$.ajax({
+				url: '/yums_by_tag.json?tag_name='+area_name+'&current_page='+current_page,
+				beforeSend: function(){
+					$(load_icon).addClass('center_progress');
+				},
+				success: function(data){
+					$(load_icon).remove().fadeOut();
+					for (var i = 0; i < 16; i++){
+						$(wrapper).loadShakeYumlet(data.api[i]);
+					};
+					if (data.more_pages == 1){
+						$(wrapper).loadMoreAreaShakes(area_name, current_page);
+					}
+
+				}
+			})
+		};
+		
+		
+		jQuery.fn.loadMoreAreaShakes = function(area_name, current_page){
+			var load_button = $('<a id="load_more" href="#"> more shakes! </a>');
+
+			var wrapper = this;
+			$(wrapper).prepend(load_button);
+			$(load_button).click(function(e){
+				e.preventDefault();
+				$(this).remove();
+				var load_more = $('<div id="load_more">loading... </div>');
+				$(wrapper).prepend(load_more);
+				$(wrapper).loadAreaShake(area_name, current_page + 1);
+			});
+		}
+		
+
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	area
+<% end %>
+
+<% content_for :header_subtitle do%>
+	manage your interest and expertise
+<% end %>
+<div id="tag">
+	
+	<% if @tag.nil? %>
+		<div id="tag_name"><%= params[:tag_name] %></div>	
+		<div id="no_results">No results? Create a new post and be the pioneer in this area!</div>
+		<img id="up_arrow" src="/images/up_arrow.png" />
+	<% else %>
+		<div id="tag_name"><%= @tag.name %></div>	
+		<div class="left150">		
+			<div id="area_top_five"></div>
+		</div>
+		<div class="right650">
+			<div id="my_yums">		
+			</div>
+		</div>
+	<% end %>
+</div>

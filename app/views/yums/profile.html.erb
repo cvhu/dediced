@@ -1,0 +1,26 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var token = $("#token").text();
+			$("#token").remove();
+			$("#content-wrapper").loadYumProfile(token);
+		});
+		
+
+		
+		
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	
+<% end %>
+
+<% content_for :header_subtitle do%>
+	
+<% end %>
+
+
+<div id="content-wrapper">
+	<div id="token"><%= @token%></div>
+</div>

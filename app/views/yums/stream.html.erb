@@ -1,0 +1,51 @@
+
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var current_page = 1;			
+			$("#stream").loadStream('/api/stream/date.json', current_page);
+			$("#menu-sidebar-stream").menu_selected();
+			$("#stream-select").change(function(){
+				var stream_select = $('option:selected').val();
+				if (stream_select=='date'){
+					var url = '/api/stream/date.json';
+				}
+				if (stream_select=='interest'){
+					var url = '/api/stream/interest.json';
+				}							
+				$("#stream").empty().loadStream(url, current_page);
+			})
+		});
+		
+		jQuery.fn.calibrateColor = function(){
+			for(var i = 0.0;i<1;i = i + 0.01){
+				$(this).append($('<div></div>').text(i).paintScore(i).css('font-size','5pt'));
+			};
+			return this;
+		}
+		
+
+		
+		
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	stream
+<% end %>
+
+<% content_for :header_subtitle do%>
+	content flows like tap water
+<% end %>
+
+
+<div id="content-wrapper">
+	<div id="stream-wrapper">
+		<select id="stream-select">
+			<option value="date">By Date</option>
+			<option value="interest">By Interest</option>
+		</select>	
+		<div id="stream">
+		</div>
+	</div>
+</div>

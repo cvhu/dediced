@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/dediced/!svn/ver/63/trunk/app/views/user_mailer
+END
+feedback_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dediced/!svn/ver/64/trunk/app/views/user_mailer/feedback_email.html.erb
+END
+feedback_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dediced/!svn/ver/64/trunk/app/views/user_mailer/feedback_email.text.erb
+END
+reset_password.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dediced/!svn/ver/64/trunk/app/views/user_mailer/reset_password.html.erb
+END
+reset_password.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dediced/!svn/ver/64/trunk/app/views/user_mailer/reset_password.text.erb
+END

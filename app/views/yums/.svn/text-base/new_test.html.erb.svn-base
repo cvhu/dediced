@@ -1,0 +1,12 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function() {
+			$("#wrapper").newPost();
+		});		
+	</script>
+<% end %>
+
+<% content_for :top_header do%>
+	add new
+<% end %>
+<div id="wrapper"></div>

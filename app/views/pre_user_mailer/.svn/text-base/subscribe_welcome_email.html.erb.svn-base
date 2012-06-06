@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>dediced.com</title>
+  <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="en-US" />
+</head>
+<body style="margin: 0;
+padding: 0;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+background: #fff;">
+	<div id="message_container" style="margin: 0 auto 0 auto;width: 600px;">
+		<div id="header" class="fixed_top">
+					<span class="logo">
+						<a style="clear: both;float: left;height: 80px;" href="/">
+							<img src="http://dediced.com/images/dediced.png" height="80px" alt="dediced.com" />
+						</a> 
+					
+					</span>
+					<span class="banner" style="margin-top: 23px;
+					float: left;
+					font-size: 37px;
+					color: #777;"> 	 Subscribed!
+		</span>
+				</div>
+			<div id="message_box" style="	clear: both;
+				border-radius: 5px;
+				border: 3px solid #ccc;
+			    margin: 0 auto 0 auto;
+			    width: 600px;
+			    background: #eee;
+			    padding: 20px 20px 20px 20px;
+				color: #333;">
+				<div id="message_content" style="width: 90%;
+				margin-left: 20px;
+				margin-right: auto;
+				margin-top: 10px;
+				margin-bottom: 20px; color: #555">
+						<div id="message_title">Thank you for subscribing to dediced!</div>		
+						<p> We will send you an invitation as soon as we release our beta!</p>
+						<p> Thanks, <p>
+						<p> The Dediced team</p>
+				</div>
+				<div id="message_footer" style="color: #777;
+				font-weight: bold;
+				font-size: 85%;
+				clear: both;
+				margin-top: 20px;
+				text-align: right;"><span> info@dediced.com &copy; 2011-2012 .Dediced LLC All rights reserved.</span> </div>
+			</div>
+	</div>	
+</body>
+</html>

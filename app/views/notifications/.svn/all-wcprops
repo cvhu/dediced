@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/dediced/!svn/ver/63/trunk/app/views/notifications
+END
+_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dediced/!svn/ver/39/trunk/app/views/notifications/_notification.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dediced/!svn/ver/39/trunk/app/views/notifications/index.html.erb
+END

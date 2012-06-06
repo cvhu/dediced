@@ -1,0 +1,53 @@
+
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var current_page = 1;
+			var load_more = $('<div id="load_more">loading... </div>');
+			$("#news_results").append(load_more).loadShake($('#user_profile').attr('user_id'), current_page);
+		});
+		
+		jQuery.fn.calibrateColor = function(){
+			for(var i = 0.0;i<1;i = i + 0.01){
+				$(this).append($('<div></div>').text(i).paintScore(i).css('font-size','5pt'));
+			};
+			return this;
+		}
+		
+		jQuery.fn.loadShake = function(user_id, current_page){
+			var wrapper = this;
+			var load_icon = $(wrapper).find("#load_more");
+			$.ajax({
+				url: '/shake/latest.json?current_page='+current_page,
+				beforeSend: function(){
+					$(load_icon).addClass('center_progress');
+				},
+				success: function(data){
+					$(load_icon).remove().fadeOut();
+					for (var i = 0; i < 16; i++){
+						$(wrapper).loadShakeYumlet(data.api[i]);
+					};
+					if (data.more_pages == 1){
+						$(wrapper).loadMoreShakes(user_id, current_page);
+					}
+				}
+			});
+		}
+		
+		
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	shake
+<% end %>
+
+<% content_for :header_subtitle do%>
+	the <span style="color: hsl(0, 70%, 50%)">hot</span> rises, the <span style="color: hsl(220, 70%, 50%)">cold</span> sinks
+<% end %>
+
+
+<div id="subcontent">
+	<div id="news_results">
+	</div>
+</div>

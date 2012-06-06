@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/dediced/!svn/ver/63/trunk/db/migrate
+END
+20110601143305_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/dediced/!svn/ver/1/trunk/db/migrate/20110601143305_create_users.rb
+END
+20110606221256_add_image_to_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dediced/!svn/ver/1/trunk/db/migrate/20110606221256_add_image_to_users.rb
+END
+20110616171209_create_mobile_tokens.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dediced/!svn/ver/1/trunk/db/migrate/20110616171209_create_mobile_tokens.rb
+END
+20110703171434_create_imgs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dediced/!svn/ver/1/trunk/db/migrate/20110703171434_create_imgs.rb
+END
+20110715162156_add_location_to_user_pre_user_yum.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dediced/!svn/ver/31/trunk/db/migrate/20110715162156_add_location_to_user_pre_user_yum.rb
+END
+20110601204910_create_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dediced/!svn/ver/1/trunk/db/migrate/20110601204910_create_ratings.rb
+END
+20110621165543_create_tags.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dediced/!svn/ver/1/trunk/db/migrate/20110621165543_create_tags.rb
+END
+20110703213234_add_img_css.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dediced/!svn/ver/1/trunk/db/migrate/20110703213234_add_img_css.rb
+END
+20110621190603_add_url_to_yums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dediced/!svn/ver/1/trunk/db/migrate/20110621190603_add_url_to_yums.rb
+END
+20111117211908_add_user_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dediced/!svn/ver/59/trunk/db/migrate/20111117211908_add_user_token.rb
+END
+20110711201029_add_token_to_preuser.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dediced/!svn/ver/30/trunk/db/migrate/20110711201029_add_token_to_preuser.rb
+END
+20110526225405_create_pre_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dediced/!svn/ver/1/trunk/db/migrate/20110526225405_create_pre_users.rb
+END
+20110620184820_create_notifications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dediced/!svn/ver/1/trunk/db/migrate/20110620184820_create_notifications.rb
+END
+20110726151140_add_viewed_notification.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dediced/!svn/ver/39/trunk/db/migrate/20110726151140_add_viewed_notification.rb
+END
+20110703172008_add_img_id.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dediced/!svn/ver/1/trunk/db/migrate/20110703172008_add_img_id.rb
+END
+20110601205013_create_comment_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dediced/!svn/ver/1/trunk/db/migrate/20110601205013_create_comment_ratings.rb
+END
+20110606221316_add_image_to_yums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dediced/!svn/ver/1/trunk/db/migrate/20110606221316_add_image_to_yums.rb
+END
+20110624213324_add_zipcode_to_subscription.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dediced/!svn/ver/1/trunk/db/migrate/20110624213324_add_zipcode_to_subscription.rb
+END
+20110709200422_add_img_dimensions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dediced/!svn/ver/8/trunk/db/migrate/20110709200422_add_img_dimensions.rb
+END
+20110621165610_create_tag_yums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dediced/!svn/ver/1/trunk/db/migrate/20110621165610_create_tag_yums.rb
+END
+20110601204217_create_yums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dediced/!svn/ver/1/trunk/db/migrate/20110601204217_create_yums.rb
+END
+20110601212230_add_name_columns.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dediced/!svn/ver/1/trunk/db/migrate/20110601212230_add_name_columns.rb
+END
+20110601204758_create_comments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dediced/!svn/ver/1/trunk/db/migrate/20110601204758_create_comments.rb
+END
+20110708225402_clean_up_images.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dediced/!svn/ver/6/trunk/db/migrate/20110708225402_clean_up_images.rb
+END

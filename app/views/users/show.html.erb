@@ -1,0 +1,100 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {			
+			var user_id = $('#user_id').text();
+			$("#user_posts").parent().removeClass('user_tab').addClass('current_tab');
+			$("#profile_content").postsTab(user_id);
+			$("#user_posts").click(function(e){
+				e.preventDefault();
+				$(this).currentTab();
+				$("#profile_content").postsTab(user_id);
+			});
+			$("#user_ups").click(function(e){
+				e.preventDefault();
+				$(this).currentTab();
+				$("#profile_content").upsTab(user_id);
+			});
+			
+			
+			// $('#related_tags').loadUserAreas("/profile/"+$('#user_id').text()+"/related_tags.json");			
+			loadProfileTopFive(user_id);
+			
+			var change_profile_tip = $('<div class="tooltip hover_hint"></div>').text('change your profile picture at gravatar.com');
+			$('#profile-user-picture').append(change_profile_tip).buildTooltip();
+			
+			$('#profile-user-description').loadUserDescription(user_id);
+		})
+		
+		jQuery.fn.loadUserDescription = function(user_id){
+			var root = this;
+			var strengths = $('<div id="profile-user-strengths"></div>').appendTo(root);
+			var interests = $('<div id="profile-user-interests"></div>').appendTo(root);
+			$.ajax({
+				url: '/api/user/'+user_id+'/description.json',
+				beforeSend: function(){
+					$(strengths).loading();
+				},
+				success: function(data){
+					$(strengths).unloading().empty();
+					$(strengths).html('is good at ');
+					$.each(data.strengths, function(i,v){
+						$('<a class="profile-user-strength"></a>').attr('href','/area/'+v.area).html(v.area).paintScoreColor(v.score).appendTo(strengths);
+					});
+					
+					$(interests).html('wants to be better at ');
+					$.each(data.interests, function(i,v){
+						$('<a class="profile-user-interest"></a>').attr('href','/area/'+v.area).html(v.area).paintScoreColor(v.score).appendTo(interests);
+					});
+				}
+			})
+		}
+		
+		jQuery.fn.currentTab = function(){
+			var selector = this;
+			$("#user_tabs li").removeClass('current_tab').addClass('user_tab');
+			$(this).parent().removeClass('user_tab').addClass('current_tab');
+		}
+		
+	</script>
+<% end %>
+<% content_for :header_title do%>
+	profile
+<% end %>
+
+<% content_for :header_subtitle do%>
+	we are what we do
+<% end %>
+
+
+<div id="content-wrapper">
+	<div id="stream-wrapper">
+		<div id="profile">
+			<div id="profile-user">
+				<div id="profile-user-header">
+					<div id="user_id" style="display:none;"><%= @user.id%></div>								
+					<div id="profile-user-stats">
+						<div class="profile-user-stats"><div class="profile-user-stats-value"><%= @user.totalRating[:posts]%></div><div class="profile-user-stats-subscript">posts</div></div>
+						<div class="profile-user-stats"><div class="profile-user-stats-value"><%= @user.totalRating[:uped]%></div><div class="profile-user-stats-subscript">ups</div></div>
+						<div class="profile-user-stats"><div class="profile-user-stats-value"><%= @user.totalRating[:downed]%></div><div class="profile-user-stats-subscript">downs</div></div>
+					</div>								
+				</div>
+				<div id="profile-user-content">
+					<a id="profile-user-picture" href="https://en.gravatar.com/site/signup" target="_blank">
+						<%= image_tag @user.gravatar(140), :class=>'gravatar140'%>
+					</a>
+					<div id="profile-user-description">
+						<div id="profile-user-name"><%= @user.name %></div>
+					</div>
+				</div>
+			</div>				
+			<ul id="user_tabs">
+				<li class="user_tab"> <a href="#" id="user_posts">posts</a></li>
+				<li class="user_tab"> <a href="#" id="user_ups">ups</a></li>
+			</ul>
+
+			<div id="profile_content">
+		
+			</div>
+		</div>
+	</div>
+</div>

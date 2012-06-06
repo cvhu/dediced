@@ -1,0 +1,956 @@
+.user_badge{
+	float:left;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+//	width: 50px;
+//	height: 30px;
+	text-align: center;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.user_badge div.first{
+	background: #555;
+	padding: 2px;
+}
+
+.user_info{
+	float:left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+
+
+.page{
+	float: left;
+	background: #09c; //#37f;
+}
+
+.deal{
+	float: left;
+	background: #ff6600;
+}
+
+.place{
+	float: left;
+	background: #3c0;
+}
+
+
+
+
+.link{
+	border-radius: 3px;
+	margin: 3px;
+	padding: 2px;
+	float:left;
+}
+
+.link a{
+	color: #fff;
+}
+
+/*
+ ******************* yums **********************/
+
+#yums{
+	clear:both;
+	width: 100%;
+}
+
+
+
+#yums > *{
+	margin: 10px;
+}
+
+/*
+ ******************* yum **********************/
+
+#yum_wrapper{
+	float: left;
+	position: relative;
+	left: 50%;
+	background: none;
+}
+
+.yum{
+	background: #fff;
+	position: relative;
+	float: left;
+	left: -50%;
+	border-radius: 3px;
+	border: solid 3px #555;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	padding: 0px;
+}
+
+.yum .yum_image{
+	float:left;
+}
+
+
+/*
+ ******************* yumlet **********************/
+
+.yumlet{
+	float:left;
+	margin: 0px;
+	padding: 2px;
+	background: #fff;
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+
+
+.yumlet .yum_image{
+	float:left;
+	border-radius: 10px;
+}
+
+
+.yumlet .yum_content{
+	clear: both;
+/*	width: 150px;*/
+	position: relative;
+	height: 150px;
+	width: 150px;
+	background: #fff;
+/*	float: left;*/
+}
+
+.yum .yum_content{
+	clear: both;
+	width: 780px;
+	margin: 0px;
+	padding: 10px;
+	float:left;
+	border-radius: 1px;
+	background: #ddd;
+}
+
+.yum_content_name{
+	clear:both;
+	float: left;
+	margin: 3px;
+	font-size: 125%;
+	font-weight: bold;
+	color: #333;
+	text-transform: capitalize;
+}
+
+.yum_content_url{
+	float: left;
+	padding: 3px;
+	background: #5083fa;
+}
+
+.yum_content_tags{
+	float: left;
+}
+
+a.yum_content_tag{
+/*	float: left;*/
+/*	position: relative;*/
+	display: inline-block;
+	margin: 2px;
+	padding: 1px;
+	border-radius: 3px;
+	border: 3px solid #333;
+	background: #555;
+	color: #ddd;
+}
+
+.yumlet .yum_review{
+	overflow: hidden;
+	width: 100%;
+}
+
+.yum .yum_review{
+	clear: both;
+/*	background: #000;*/
+	margin: 5px;
+	padding: 10px;
+}
+
+.yum_review_user{
+	float:left;
+}
+
+.yum_review_content{
+	float:left;
+	margin-left: 5px;
+	padding: 5px;
+	color: #333;
+}
+
+.yumlet .yum_review_content{
+	clear:both;
+}
+
+
+.yum_review_timestamp{
+	margin-left: 5px;
+	font-size: 75%;
+	color: #777;
+	font-weight: bold;
+}
+
+.yum_review_comments{
+	background: #777;
+}
+
+
+a.like{
+	color: rgb(0,64,128);
+}
+
+a.dislike{
+	color: rgb(128,0,0);
+}
+
+
+
+/* comments
+ *****************************************/
+.comments{
+	clear: both;
+	padding: 10px;
+	margin: 0px;
+}
+
+.comment{
+	background: #eee;
+	padding: 10px;
+	margin: 2px;
+	clear: both;
+	float: left;
+	width: 100%;
+}
+
+
+.comment_user{
+	float:left;
+}
+
+.comment_content{
+	float: left;
+	padding: 5px;
+	color: #333;
+}
+
+
+.comment_timestamp{
+	margin-left: 5px;
+	font-size: 75%;
+	color: #777;
+	font-weight: bold;
+}
+
+
+/*
+ ******************* images **********************/
+
+
+.full150 img{
+	width: 150px;
+}
+
+
+.full200 img{
+	width: 200px;
+}
+
+.full250 img{
+	width: 250px;
+}
+
+
+.full300 img{
+	width: 300px;
+}
+
+.thumbnail150{
+	width:150px;height:150px;overflow:hidden;float:left;
+	margin-right: 0px;
+
+}
+
+.thumbnail100{
+	width:100px;height:100px;overflow:hidden;float:left;
+	margin-right: 0px;
+
+}
+
+.thumbnail50{
+	width:50px;height:50px;overflow:hidden;float:left;
+	margin-right: 0px;
+	border-radius: 10px;
+
+}
+
+.thumbnail30{
+	width:30px;height:30px;overflow:hidden;float:left;
+	margin-right: 0px;
+	border-radius: 5px;
+}
+
+
+
+/*
+ ******************* user profile **********************/
+
+#interest_score{
+	color: #1a1;	
+}
+
+#auth_score{
+	color: #11a;	
+}
+
+
+.total_posts{
+	border: 3px solid #08b;
+	color: #08b;
+}
+
+.total_uped{
+	border: 3px solid #0c8;
+	color: #0c8;
+}
+
+.total_downed{
+	border: 3px solid #f50;
+	color: #f50;	
+}
+
+
+#user{
+	float:left;
+	padding: 0px;
+	margin: 10px 0px 20px 0px;
+}
+
+#user_name{
+	color: #777;
+	font-weight: bold;
+	float: left;
+	font-size: 200%;
+	padding: 5px;
+	margin: 5px;
+}
+
+#user_content{
+	margin-top: 10px;
+	float:left;
+}
+
+#user_header{
+	float:left;
+	width: 150px;
+//	background: #444;
+}
+
+
+
+
+
+#user_toolbar{
+	margin-top: 5px;
+	margin-bottom: 15px;
+	padding: 5px;
+	clear:both;
+}
+
+
+#my_yums_bar{
+	width: 100%;
+	clear: both;
+	font-weight: bold;
+	background: #eee;
+	color: #777;
+	border-top: 3px solid #777;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	padding: 3px;
+}
+
+
+
+
+
+/* notifications
+ *****************************************/
+
+
+.date{
+	font-size: 125%;
+	font-weight: bold;
+}
+.notifications{
+	padding: 10px;
+	margin: 10px;
+	clear: both;
+	width: 500px;
+
+}
+
+.notifications li{
+	list-style-type: none;
+	text-decoration: none;
+	padding-left: 15px;
+	margin: 5px;
+	
+}
+
+.notifications li:hover{
+	background: #777;
+}
+
+.description a{
+	color: #333;
+}
+
+.destroy a{
+	color: white;
+	float: right;
+}
+
+
+/* top locations
+ *****************************************/
+
+#top_locations{
+	margin: 0px;
+	padding: 0px;
+	background: #222;
+	font-size: 200%;
+	float:left;
+	width: 300px;
+}
+
+#top_locations ul{
+	text-decoration: none;
+	list-style-type: none;
+	width: 300px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#top_locations li{
+	margin: 10px;
+	padding: 5px;
+	background: #555;
+	border-radius: 5px;
+}
+
+#top_locations li .city{
+	color: #ddd;
+}
+
+#top_locations li .count{
+	float: right;
+	font-weight: bold;
+	color: #ddd;
+}
+
+/* tags
+ *****************************************/
+#tag_name{
+	font-size: 300%;
+	font-weight: bold;
+	margin: 20px;
+	padding: 10px;
+	border-bottom: solid 3px #aaa;
+/*	border-radius: 5px;*/
+	clear: both;
+}
+
+.yum_content_tag a{
+	color: white;
+}
+
+
+.hide_yum{
+	float: left;
+	margin: 5px;
+}
+
+.hide_yum a{
+	font-weight: bold;
+	font-size: 90%;
+	color: #333;
+}
+/*
+.stats{
+	margin: 10px;
+	padding: 0px;
+	clear: both;
+	float: left;
+}
+*/
+
+.a_score, .i_score{
+	font-weight: bold;
+	font-size: 100%;
+	padding: 4px;
+	text-align: center;
+}
+
+
+
+
+.comment_stats{
+	margin-right: 5px;
+	float: right;
+}
+
+.total_comment_like{
+	color: #08f;
+}
+
+.total_comment_hide{
+	color: #f08;
+	
+}
+
+.comment_actions{
+	float: right;
+}
+
+.comment_actions a{
+	padding: 2px;
+	color: #555;
+}
+
+#tag_top_users{
+	font-size: 120%;
+	font-weight: bold;
+	clear: both;
+	float: left;
+	background: #eee;	
+	border: 2px solid #555;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 0px;
+}
+
+#tag_top_users .section_title{
+	padding: 5px;
+	background: #555;
+	color: white;
+}
+
+
+#related_tags{
+	font-size: 120%;
+	font-weight: bold;	
+	word-wrap: break-word;
+	width: 135px;
+	clear: both;
+	float: left;
+	background: #eee;	
+	border: 2px solid #aaa;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 0px;
+}
+.related_tag{
+	float: left;
+	margin: 3px 2px;
+	padding: 3px 0px;
+	text-align: left;
+}
+
+#related_tags .section_title{
+	padding: 5px;
+	background: #aaa;
+	color: white;
+}
+
+
+.tag_user{
+	padding: 2px;
+	text-align: left;
+}
+
+.tag_user a{
+	color: #333;
+}
+
+#user_interests{
+	margin: 20px;
+	padding: 0px;
+	float: left;
+/*	border: 1px solid #171;*/
+}
+
+#user_interests .section_title{
+	background: #fff;
+	color: #1a1;
+}
+
+#user_interests th{
+	background: #fff;
+	color: #1a1;
+}
+
+
+.section_title{
+	font-size: 150%;
+	font-weight: bold;
+}
+
+#user_authors{
+	margin: 20px;
+	padding: 0px;
+	float: left;
+/*	border: 1px solid #117;*/
+}
+
+#user_authors .section_title{
+	background: #fff;
+	color: #11a;
+}
+
+
+#user_authors th{
+	background: #fff;
+	color: #11a;
+}
+#user_interests tr:nth-child(even){
+	color: #fff;
+	background: #171;
+}
+
+#user_interests tr:nth-child(odd){
+	color: #fff;
+	background: #1a1;
+}
+
+
+#user_authors tr:nth-child(even){
+	color: #fff;
+	background: #117;
+}
+
+#user_authors tr:nth-child(odd){
+	color: #fff;
+	background: #11a;
+}
+
+
+/*.interest{
+	clear: both;
+}
+
+.interest > *{
+	color: #000;
+	float: left;
+}
+*/
+/*.author{
+	clear: both;
+}
+
+.author > *{
+	color: #000;
+	float: left;
+}
+*/
+
+#new_post{
+	clear: both;
+	float: left;
+}
+
+#new_post > *{
+	float: left;
+}
+
+#text_cover{
+/*	background: #f80;*/
+}
+
+.post_cover{
+	width: 150px;
+	height: 150px;
+/*	border: 1px solid #333;*/
+/*	border-radius: 5px;*/
+	overflow: hidden;
+	float: left;
+}
+
+#left_button{
+	margin-top: 70px;
+	position: relative;
+}
+
+#right_button{
+	margin-top: 70px;
+	float: left;
+}
+
+
+.page_title{	
+	font-family: serif;
+	color: #fff;
+	margin: -2px;
+	padding: 5px;
+	overflow: hidden;
+	font-size: 175%;
+	font-weight: 700;
+	line-height: 85%;
+	text-align: left;
+}
+
+#post_preview{
+	margin: 10px;
+	padding: 10px;
+	clear: both;
+	float: left;
+}
+
+#post_preview > *{
+	float: left;
+}
+
+#cover_count{
+	position: relative;
+	right: 50px;
+	color: #aaa;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 80%;
+	
+}
+
+#new_post_form{
+	float:left;	
+	border: solid 2px #ddd;
+	border-radius: 5px;
+	margin: 0px;
+	padding: 10px;
+/*	width: 400px;*/
+}
+
+#new_post_form > input{
+	clear: both;
+	float:left;
+	margin: 5px;
+	padding: 5px;
+	width: 290px;
+	border: solid 1px #aaa;
+}
+
+#new_post_form > textarea{
+	clear: both;
+	float:left;
+	margin: 5px;
+	padding: 5px;
+	width: 290px;
+	border: solid 1px #aaa;
+}
+
+
+#go_button{
+	border-radius: 3px;
+	float: left;
+	font-size: 150%;
+	margin: 5px;
+	padding: 5px;
+	background: #08f;
+	color: #fff;	
+}
+
+#display_url{
+	font-family: monospace;
+	color: #777;
+	margin-bottom: 10px;
+}
+
+.submit_button{
+	border-radius: 3px;
+	clear: both;
+	float: left;
+	font-size: 150%;
+	margin: 5px;
+	padding: 5px;
+	background: #0f5;
+	color: #fff;
+}
+
+#post_url{
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 80%;
+	border: solid 1px #bbb;
+}
+
+#restart_button{
+	font-weight: bold;
+	display: block;
+	float: left;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 5px;
+	background: #08f;
+	color: #fff;
+}
+
+#news_results{
+	margin-top: 30px;
+}
+
+
+.more_areas{
+	float: left;
+/*	background: none;*/
+	margin: 3px;
+	padding: 2px;
+	color: #777;
+	font-weight: bold;
+	padding: 5px;
+}
+
+
+#profile_top_five{
+	display: inline-block;
+	vertical-align: top;
+	padding: 0px;
+}
+
+.table_title{
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+#top_authors, #top_interests{
+	display: inline-block;
+	margin: 2px 2px;
+}
+
+.score{
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+#top_authors .area{
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 2px;
+	padding: 3px;
+	border: 2px solid #555;
+	background: #777;
+	color: #fff;
+}
+
+
+#top_interests .area{
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 2px;
+	padding: 3px;
+	border: 2px solid #555;
+	background: #777;
+	color: #fff;
+}
+
+#top_interests_section, #top_authors_section{
+	background: #ddd;
+	vertical-align: top;
+	padding: 5px;
+	margin-top: 15px;
+	margin: 5px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	width: 225px;
+	overflow: auto;
+	display: inline-block;
+}
+
+
+#dialog_wrapper{
+	float: left;
+	position: relative;
+	left: 50%;
+	background: none;
+}
+
+#dialog{
+	background: #fff;
+	position: relative;
+	float: left;
+	left: -50%;
+	border-radius: 3px;
+	border: solid 3px #555;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;	
+	max-height: 500px;
+	overflow: auto;
+	padding: 20px;
+}
+
+.more_button{
+	color: #777;
+	text-align: right;
+	font-weight: bold;
+}
+
+.a_score,.i_score{
+	text-align: center;
+	font-size: 200%;
+	font-weight: bold;
+	margin: 5px;
+	padding: 2px;
+	border-radius: 5px;	
+	background: #fff;
+}
+
+.yumlet_i_score{
+	float: left;
+	margin-left: -48px;
+	margin-top: 127px;
+	color: white;
+	padding: 5px;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.shake_unit{
+	display: inline-block;
+}
+
+
+
+.user>img{
+	height: 20px;
+}
+
+.user>a{
+	display: inline-block;
+	vertical-align: top;	
+	margin: 5px;
+	color: #555;
+}
+
+#area_top_five{
+	width: 500px;
+	margin: 0px auto;
+}
+
+#my_yums{
+	margin: 20px;
+	padding: 15px;
+}

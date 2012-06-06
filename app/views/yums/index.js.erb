@@ -1,0 +1,17 @@
+var yums_obj = $("<% @yums.each do |yum| %><%= escape_javascript(render :partial => 'yums/yumlet', :locals => {:yum => yum})%><% end %>");
+$.each($(yums_obj).children(), function(){
+	$(this).parent().callComments();
+	$(this).parent().hijaxRating();
+});
+
+<% if @yums.current_page==1 %>
+	$("#yums").html(yums_obj);
+	$("#more").attr("class","<%= @yums.total_pages %>");
+<% else %>
+	$("#yums").append(yums_obj);
+<% end %>
+
+if ($("#more").attr('class') > <%= @yums.current_page %>){
+	// alert($("#more").attr('class'));
+	$("#more").fadeIn();
+};

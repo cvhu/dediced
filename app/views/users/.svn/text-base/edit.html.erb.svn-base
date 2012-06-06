@@ -1,0 +1,38 @@
+<% title "Edit Profile" %>
+
+<%= form_for @user, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  	<table id="edit">
+		<tbody>
+			<tr class="required", id="name">
+				<th> <%= f.label :name, "username"%> </th>
+	    		<td> <%= f.text_field :name, :class => "field"%> </td>
+			</tr>
+			
+			<tr class="required", id="address">
+				<th> <%= f.label :address, "location"%> </th>
+	    		<td> <%= f.text_field :address, :class => "field"%> </td>
+			</tr>
+			
+			
+			<%= fields_for @user.img , :html => {:multipart => true} do |field|%>	
+
+				<tr class="optional", id="user_img_src">
+					<th><%= field.label :src, "Upload a profile picture:"%></th>
+					<td><%= field.file_field :src %></td>
+				</tr>
+
+			<% end %>
+	  		
+
+			<tr class="submit">				
+				<th> </th>
+				<td> <%= f.submit "save", :class => "button"%> </td>
+			</tr>
+	  	</tbody>
+	</table>
+<% end %>
+
+
+
+<p> <%= link_to "Back to Profile", user_url(current_user), :class => "button" %></p>

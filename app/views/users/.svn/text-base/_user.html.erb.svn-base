@@ -1,0 +1,8 @@
+<div class="user_badge">
+	<div class="thumbnail30">
+		<%= image_tag user.img.uri, :style => "#{user.img.css(30)}"%>
+	</div>
+	<div class="user_info">
+		<%=h user.name %>
+	</div>
+</div>

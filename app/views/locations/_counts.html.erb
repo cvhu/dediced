@@ -1,0 +1,7 @@
+<ul>
+	<% maps.keys.each do |location| %>
+			<% unless Geocoder.search(location).empty? %>
+				<li><span class="city"><%= location %></span> <span class="count"><%= maps[location]%></span></li>
+			<% end %>
+	<% end %>
+</ul>

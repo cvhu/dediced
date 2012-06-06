@@ -1,0 +1,27 @@
+<% content_for :top_header do%>
+ elites
+<% end %>
+
+<div id="user_authors">
+	<div class="section_title"> Top Users</div>
+	<table>
+	<% @user_elites_sorted.each do |upair| %>
+		<tr>
+			<td><%= format("%.f%",upair[1]*100)%></td>
+			<td><%= User.find(upair[0]).name %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>
+
+<div id="user_interests">
+	<div class="section_title"> Top Areas</div>
+	<table>
+	<% @area_elites_sorted.each do |apair| %>
+		<tr>
+			<td><%= format("%.f%",apair[1]*100)%></td>
+			<td><%= Tag.find(apair[0]).name %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>

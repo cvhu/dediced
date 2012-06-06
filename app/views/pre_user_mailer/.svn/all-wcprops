@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/dediced/!svn/ver/63/trunk/app/views/pre_user_mailer
+END
+test.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/dediced/!svn/ver/63/trunk/app/views/pre_user_mailer/test.html
+END
+invitation_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dediced/!svn/ver/64/trunk/app/views/pre_user_mailer/invitation_email.html.erb
+END
+invitation_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dediced/!svn/ver/64/trunk/app/views/pre_user_mailer/invitation_email.text.erb
+END
+subscribe_welcome_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dediced/!svn/ver/64/trunk/app/views/pre_user_mailer/subscribe_welcome_email.html.erb
+END
+subscribe_welcome_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dediced/!svn/ver/64/trunk/app/views/pre_user_mailer/subscribe_welcome_email.text.erb
+END

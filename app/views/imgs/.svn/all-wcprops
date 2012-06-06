@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/dediced/!svn/ver/63/trunk/app/views/imgs
+END
+_upload_image.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/dediced/!svn/ver/6/trunk/app/views/imgs/_upload_image.html.erb
+END
+crop_image.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/dediced/!svn/ver/56/trunk/app/views/imgs/crop_image.html.erb
+END
+select_image.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/dediced/!svn/ver/40/trunk/app/views/imgs/select_image.html.erb
+END
+_url_image.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/dediced/!svn/ver/6/trunk/app/views/imgs/_url_image.html.erb
+END

@@ -1,0 +1,21 @@
+<% title "Locations"%>
+
+<table><tbody>
+	<tr>
+		<th> name </th>
+		<th> address </th>
+	</tr>
+<% @yums.each do |yum| %>
+	<tr>
+		<td> <%= yum.name %> </td>
+		<td> <%= yum.address %> </td>
+		<td> <%= yum.longitude %> </td>
+		<td> <%= yum.latitude %> </td>
+	</tr>
+<% end %>
+</table></tbody>
+
+<% categorize_location(@yums).keys.each do |location| %>
+	<%= "#{location}: #{@maps[location].length}"%><br/>
+	<%= image_tag "#{static_map(Yum.find(@maps[location]))}" %>
+<% end %>

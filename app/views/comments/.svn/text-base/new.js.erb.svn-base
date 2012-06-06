@@ -1,0 +1,5 @@
+$("#<%=h @yum.id %> .comments")
+	.html("<%= escape_javascript(render :partial => 'comment', :collection => @comments)%><%= escape_javascript(render :partial => 'comment_form', :locals => {:comment => @comment})%>")
+	.hide()
+	.hijaxCommentRating();
+$("#<%=h @yum.id %> .new_comment").submitWithAjax();

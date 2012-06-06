@@ -1,0 +1,9 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var yum_id = $('#yum_comment_id').text();			
+			openYum(yum_id);
+		})
+	</script>
+<% end %>
+<div id="yum_comment_id"><%=@yum.id%></dvi>

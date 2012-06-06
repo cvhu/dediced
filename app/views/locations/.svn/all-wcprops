@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/dediced/!svn/ver/63/trunk/app/views/locations
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/dediced/!svn/ver/47/trunk/app/views/locations/index.html.erb
+END
+_counts.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/dediced/!svn/ver/47/trunk/app/views/locations/_counts.html.erb
+END
+location_counts.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dediced/!svn/ver/48/trunk/app/views/locations/location_counts.js.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/dediced/!svn/ver/41/trunk/app/views/locations/show.html.erb
+END

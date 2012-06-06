@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>dediced.com</title>
+	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Language" content="en-US" />	
+	<link href="http://0.0.0.0:3000/stylesheets/main.css?1323107994" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/model.css?1322886194" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/form.css?1322519065" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/message.css?1322763176" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/token-input-dealicious.css?1320818032" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/imageselection.css?1319740226" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://0.0.0.0:3000/stylesheets/jquery.Jcrop.css?1310070707" media="screen" rel="stylesheet" type="text/css" />
+	<script src="http://0.0.0.0:3000/javascripts/jquery.js?1310070707" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery_ujs.js?1310070707" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery.min.js?1310070707" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery.tokeninput.js?1319758326" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/imageselection.js?1310151155" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery.validate.js?1305416040" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery.hoverIntent.js?1314590474" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/jquery.Jcrop.min.js?1310070707" type="text/javascript"></script>
+	<script src="http://0.0.0.0:3000/javascripts/application.js?1322886808" type="text/javascript"></script>  
+	<meta name="csrf-param" content="authenticity_token"/>
+	<meta name="csrf-token" content="2MyXjoHEmDasx573TaNLSzTGuU+F0bnjo/GhP0ZI4pg="/>
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$.ajax({
+			url: "/yums_search/*.json", 
+			beforeSend: function(){
+				$("#news_results").text('loading...').addClass('center_progress');
+			},
+			success: function(data){
+				$('#news_results').text('').removeClass('center_progress');
+				$("#news_results").loadYumlets(data);					
+			}
+		});	
+	})
+	</script>
+
+	<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-26803309-1']);
+	_gaq.push(['_setDomainName', '.dediced.com']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		</script>
+
+	</head>
+	<body>
+
+		<div id="overlay" style="display: block; ">
+			<div id="blanket"></div>
+			<div id="add_new_wrapper" class="dialog" style="display: block; ">
+				<div id="add_new">
+					<a href="#" class="cancel"> [x]</a>
+					<div id="add_new_instruction">Your reputation starts here</div>
+					<input id="yum_url" name="yum[url]" size="40" type="text" class="" style="display: none; ">
+					<a href="#" id="yum_go_button" style="display: none; "> go </a>
+					<div id="yum_url_preview" style="width: 200px; float: left; ">
+						<img id="target" src="http://images.apple.com/home/images/hero.jpg" style="display: none; ">
+						<div style="width: 200px; height: 205px; position: relative; background-color: black; " class="jcrop-holder">
+							<div style="position: absolute; z-index: 300; width: 50px; height: 50px; top: 50px; left: 50px; ">
+								<div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow-x: hidden; overflow-y: hidden; ">
+									<img src="http://images.apple.com/home/images/hero.jpg" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; position: absolute; width: 200px; height: 205px; top: -50px; left: -50px; ">
+									<div style="position: absolute; opacity: 0.4; " class="jcrop-hline">
+										
+									</div>
+									<div style="position: absolute; opacity: 0.4; " class="jcrop-hline bottom"></div>
+									<div style="position: absolute; opacity: 0.4; " class="jcrop-vline">
+										
+									</div>
+									<div style="position: absolute; opacity: 0.4; " class="jcrop-vline right"></div>
+									<div class="jcrop-tracker" style="position: absolute; z-index: 360; cursor: move; ">
+										
+									</div>
+									</div>
+									<div style="width: 100%; height: 100%; z-index: 320; display: block; "><div style="cursor: n-resize; position: absolute; z-index: 370; width: 100%; height: 9px; top: -4px; left: -4px; "></div><div style="cursor: s-resize; position: absolute; z-index: 371; width: 100%; height: 9px; left: -4px; top: 45px; ">
+										
+									</div>
+									<div style="cursor: e-resize; position: absolute; z-index: 372; width: 9px; height: 100%; top: -4px; left: 45px; "></div>
+									<div style="cursor: w-resize; position: absolute; z-index: 373; width: 9px; height: 100%; top: -4px; left: -4px; "></div>
+									<div style="cursor: n-resize; position: absolute; z-index: 374; top: -4px; opacity: 0.5; left: 20px; " class="jcrop-handle"></div>
+									<div style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5; top: 45px; left: 20px; " class="jcrop-handle"></div>
+									<div style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5; top: 20px; left: 45px; " class="jcrop-handle"></div>
+									<div style="cursor: w-resize; position: absolute; z-index: 377; left: -4px; opacity: 0.5; top: 20px; " class="jcrop-handle"></div>
+									<div style="cursor: sw-resize; position: absolute; z-index: 378; left: -4px; opacity: 0.5; top: 45px; " class="jcrop-handle"></div>
+									<div style="cursor: nw-resize; position: absolute; z-index: 379; top: -4px; left: -4px; opacity: 0.5; " class="jcrop-handle"></div>
+									<div style="cursor: ne-resize; position: absolute; z-index: 380; top: -4px; opacity: 0.5; left: 45px; " class="jcrop-handle"></div>
+									<div style="cursor: se-resize; position: absolute; z-index: 381; opacity: 0.5; top: 45px; left: 45px; " class="jcrop-handle"></div></div></div>
+									<div class="jcrop-tracker" style="width: 204px; height: 209px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair; "></div><input type="radio" style="position: fixed; left: -120px; width: 12px; "><img width="200px" src="http://images.apple.com/home/images/hero.jpg" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; position: absolute; width: 200px; height: 205px; opacity: 0.6; "></div></div>
+					<div id="add_new_form" style="float: left; " class="form">						
+						<input id="yum_name" name="yum[name]" size="40" type="text" class="prepopulate"><div class="input_hint invalid" style="color: rgb(255, 0, 0); ">enter a name</div>
+						<ul class="token-input-list-dealicious"><li class="token-input-input-token-dealicious"><input type="text" autocomplete="off" style="outline-style: none; outline-width: initial; outline-color: initial; "><tester style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 14px; font-family: 'Lucida Grande'; font-weight: normal; letter-spacing: normal; white-space: nowrap; "></tester></li></ul><input data-pre="[]" id="yum_tag_tokens" name="yum[tag_tokens]" size="30" type="text" style="display: none; "><div class="input_hint invalid" style="color: rgb(255, 0, 0); ">enter at least a keyword</div>
+						<div id="map"></div>
+						<label for="yum_review">
+							<textarea cols="30" id="yum_review" name="yum[review]" rows="8" class="prepopulate"></textarea><div class="input_hint">274 characters remaining</div>
+							<a href="#" id="yum_submit_button" class="submit_button" style="display: none; "> submit </a><span class="submit_hint">clear all the red entries to continue</span>
+						</label></div>
+
+
+					</div>
+				</div></div>
+			</body>
+			</html>
+
+
+

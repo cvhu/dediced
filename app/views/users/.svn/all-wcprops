@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/dediced/!svn/ver/63/trunk/app/views/users
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dediced/!svn/ver/38/trunk/app/views/users/edit.html.erb
+END
+resetPassword.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dediced/!svn/ver/59/trunk/app/views/users/resetPassword.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/dediced/!svn/ver/61/trunk/app/views/users/new.html.erb
+END
+_user.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/dediced/!svn/ver/34/trunk/app/views/users/_user.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dediced/!svn/ver/64/trunk/app/views/users/show.html.erb
+END
+_user50.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/dediced/!svn/ver/53/trunk/app/views/users/_user50.html.erb
+END
+forgotPassword.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dediced/!svn/ver/61/trunk/app/views/users/forgotPassword.html.erb
+END

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  keyword_id: 1
+  yum_id: 1
+  position: 1
+  section: 1
+
+two:
+  keyword_id: 1
+  yum_id: 1
+  position: 1
+  section: 1

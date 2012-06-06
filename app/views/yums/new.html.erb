@@ -1,0 +1,155 @@
+	<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function() {
+			
+			$('.optional td').hide();
+
+			$.each($('.optional'), function(){
+				var value = $(this).find('label').text();
+				var hide = 'remove ';
+				var field = $(this).find('td');
+				var show = 'add ';
+				var button = $('<span class=show>'+show+value+'</span>');
+				$(this).find('label').hide();
+				button.appendTo($(this).find('th'));
+				$(button).click(function(e){
+					if (field.css('display')=='none'){
+						field.fadeIn();
+						$(button).text(hide+value)
+							   .removeClass('show')
+							   .addClass('hide');
+						$(field).find('input').focus();
+					}
+					else{
+						field.fadeOut();
+						$(button).text(show+value)
+							   .removeClass('hide')
+							   .addClass('show');
+					}
+				});
+			})
+				
+			jQuery.fn.populates = function(selector){
+				var name = 'here goes the title';
+				var tags = 'ex. blog, tech news, outdoor, health, photography, etc.';
+				$(this).populateElement($('#yum_name'), name);
+				$('.tag_hints').text(tags);
+				$(this).populateElement($('#yum_url'), 'http://dediced.com');
+				$(this).populateElement($('#yum_review'), 'What is it about?');
+				$(this).populateElement($('#yum_address'), 'anywhere on Earth');
+			};
+
+			
+			jQuery.fn.validates = function(selector){
+				$(this).show_submit($('#new_yum'));		
+
+				$(this).give_hints();
+				$.each($('#new_yum').find('.required:visible'), function(){
+					var input = $(this).find('input, textarea');
+					$(this).client_validation(false, $(input));
+					$(input).parentsUntil('tr').parent().find('.hint').html('<span class=bad>cannot be blank</span>');
+				})
+
+				$('#yum_name').keyup(function(){
+					$(this).validates_min_max(3, 20);
+				});
+				
+				$('#yum_url').keyup(function(){
+					$(this).validates_url();
+				});
+				
+
+				$('#yum_review').keyup(function(){
+					$(this).validates_min_max(5, 250);
+				});
+
+				$('#yum_value').keyup(function(){
+					$(this).validates_real_number($(this));
+				});
+
+				$("#yum_address").blur(function(){
+					$("#map").html($("<img/>").attr("src","http://maps.googleapis.com/maps/api/staticmap?markers="+$(this).val()+"&zoom=14&size=300x300&sensor=false"))
+						.hide()
+						.fadeIn();
+				});
+				
+			};
+			
+			
+			jQuery.fn.select_tab = function(){
+				$('tr:not(.submit)').hide();
+				$('.current').removeClass('current');
+				$(this).addClass('current');
+				
+				var selected = $(this).attr('id');
+				$.each($('.'+selected+'-tab'), function(){
+					$(this).fadeIn();
+				});
+				$('#pdp_tabs').attr('class', selected);
+				$(this).populates(selected);
+				$(this).validates(selected);
+			};
+
+			$('#selectable li').click(function(e){
+				e.preventDefault();
+				$(this).select_tab();
+			}).eq(0).select_tab();
+			
+			
+		})
+	</script>
+<% end %>
+
+
+<% title "Add New" %>
+
+<div id="pdp_tabs">
+	<ul id="selectable">
+		<li id="page"><a href=".page"> page  </a></li>
+		<li id="deal"><a href=".deal"> deal </a></li>
+		<li id="place"><a href=".place"> place </a></li>
+	</ul>
+	<div id="tabs">
+		<%= form_for @yum, :html => {:multipart => true} do |f| %>
+		  <%= f.error_messages %>
+		  	<table id="new_yum_table" class="form_table">
+				<tbody>
+					<tr class='page-tab deal-tab place-tab required'>
+						<th> <%= f.label :name, "name"%> </th>
+			    		<td> <%= f.text_field :name, :size => 40%> </td>
+					</tr>
+
+					<tr class= "deal-tab">
+			  			<th> <%= f.label :value, 'price'%> </th>
+						<td> <%= f.text_field :value, :size=>3%> </td>
+					</tr>
+
+					<tr class='page-tab deal-tab place-tab'>
+						<th> <%= f.label :tag_tokens, "tags"%> </th>
+						<td> <%= f.text_field :tag_tokens, "data-pre" => @yum.tags.map(&:attributes).to_json%></td>	
+						<td> <span class="tag_hints"></span></td>
+					</tr>
+
+					<tr class= "page-tab deal-tab required">
+			  			<th> <%= f.label :url, 'link'%></th>
+						<td> <%= f.text_field :url, :size => 40%> </td>
+					</tr>
+			  		<tr class= "deal-tab place-tab">
+			  			<th> <%= f.label :address, 'location'%> </th>
+						<td> <%= f.text_field :address, :size => 40 %> <div id="map"></div></td>
+					</tr>
+
+			  		<tr class="page-tab place-tab required">
+						<th> <%= f.label :review, "your words" %> </th>
+			    		<td> <%= f.text_area :review, :size => '40x5'%> </td>
+					</tr>
+
+					<tr class="submit">				
+						<th> </th>
+						<td> <%= f.submit "Continue", :class => "button"%> <span class="button_hints"></span></td>
+					</tr>
+			  	</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>

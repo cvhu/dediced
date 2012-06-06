@@ -1,0 +1,132 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function() {			
+			$('#content').addClass('home_canvas');
+			$('#header').hide();
+			$('#title').hide();
+			
+			$('#log_in_form').find("#email").populateElement($('#log_in_form').find("#email"), 'email');
+			$('#log_in_form').find("#password").populateElement($('#log_in_form').find("#password"), 'password');
+			
+			$('#log_in_button').click(function(e){
+				e.preventDefault();
+				$('#log_in_wrapper').addClass('dialog');
+				openDialog("#log_in_wrapper");
+			});
+						
+			$('#sign_up_button').click(function(e){
+				e.preventDefault();
+				var wrapper = $('#sign_up_wrapper').clone().addClass('dialog');
+				$(wrapper).prepareSubscribe();
+				openDialogWithoutClone($(wrapper));				
+			});
+
+			$('#sign_up_wrapper')
+				.find('.ok, .cancel')
+				.live('click', function(){
+					closeDialog(this);
+				})
+				.end()
+				.find('.ok')
+				.live('click', function(){
+				})
+				.end()
+				.find('.cancel')
+				.live('click', function(){
+			});
+			
+		})
+	</script>
+<% end %>
+
+<div class="left">
+	<img class="left" src="/images/dediced_welcome.png"/>
+</div>
+<div class="right">
+	<div id="log_in_form" class="form">
+		<%= form_tag sessions_path do %>
+			<table id="log_in_table">
+				<tbody>
+					<tr class="required">
+			    		<td> <%= text_field_tag :email, params[:email]%> </td>
+					</tr>
+					<tr class="required">
+						<td> <%= password_field_tag :password, params[:password], :class=> 'secret'%> </td>						
+					</tr>
+					<tr class="required">
+						<td> <%= link_to "forgot password?", forgot_password_url, :class=> "passive_link"%> </td>						
+					</tr>
+					
+					<tr class="submit">				
+						<td> <%= submit_tag "log in", :class=>"submit_button", :id => "log_in_submit_button" %> </td>
+					</tr>
+			  	</tbody>
+			</table>
+		<% end %>				
+	</div>
+	
+	<!-- <div id="log_in_button"> <%= link_to "log In", log_in_path %> </div> 	 -->
+</div>
+
+<div class="three_columns">
+	<div class="three_column">
+		<div class="column_title">
+			collect
+		</div>
+		<div class="column_content">
+			Build up your reputation by sharing the best. Organize, rinse, and get smart.
+		</div>
+	</div>
+	<div class="three_column">
+		<div class="column_title">
+			explore
+		</div>
+		<div class="column_content">
+			Help others find out great stuff, just like they helped you.
+		</div>
+	</div>
+	<div class="three_column">
+		<div class="column_title">
+			decided.
+		</div>
+		<div class="column_content">
+			Our system will learn about what you like, and make personalized search results, just for you. 
+		</div>
+	</div>
+</div>
+
+<div id="announcements"> Test users invited! <br/><div id="sign_up_button"><%= link_to "subscribe" %></div> 	, and we'll send out more invitations when we are ready!</div>
+
+<div id="sign_up_wrapper" style="display:none;">
+	<div id="sign_up_form" class="form">
+		<div id="dialog_title"> subscribe</div>
+		<a href="#" class="cancel"> [x]</a>
+		
+		
+	</div>	
+</div>
+
+<!-- <div id="log_in_wrapper" style="display: none;">
+	<div id="log_in" class="form">
+		<%= form_tag sessions_path do %>
+			<div id="dialog_title"> Log In <span style="font-size: 55%;">(subscribe first to get invited)</span></div>
+			<a href="#" class="cancel"> [x]</a>
+			<table id="log_in_table">
+				<tbody>
+					<tr class="required">
+						<th> <%= label_tag :email, "email"%> </th>
+			    		<td> <%= text_field_tag :email, params[:email]%> </td>
+					</tr>
+					<tr class="required">
+						<th> <%= label_tag :password %> </th>
+						<td> <%= password_field_tag :password, params[:password], :class=> 'secret'%> </td>
+					</tr>
+					<tr class="submit">				
+						<th> <%= link_to "forgot password?", forgot_password_url, :class=> "passive_link"%></th>
+						<td> <%= submit_tag "log in", :class=>"submit_button" %> </td>
+					</tr>
+			  	</tbody>
+			</table>
+		<% end %>				
+	</div>
+</div> -->

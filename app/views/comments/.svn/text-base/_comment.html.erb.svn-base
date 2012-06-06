@@ -1,0 +1,48 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function(){
+			var submit_button = $('#comment_submit_button');
+			$("#comment_content").populateElement($("#comment_content"), "write your comment here...");
+			$("#comment_content").focus(function(){
+				$(submit_button).fadeIn();
+			});
+			$(submit_button).hide();
+			$(submit_button).click(function(e){
+				e.preventDefault();
+				var comment = $('.comment:last').clone();
+				comment.find('.comment_content').text($("#comment_content").val());
+				comment.hide().insertAfter('.comment:last').fadeIn();
+			});
+		})
+
+	</script>
+<% end %>
+
+
+
+<div class="comment">
+	<div class="comment_user">
+		<%= render :partial => "users/user", :object => comment.user%>
+	</div>
+
+	<div class="comment_content" id="<%= comment.id%>">	
+		<%= comment.content%>	<span class="comment_timestamp"><%= "(#{(comment.created_at)} ago)" %></span>
+	</div> 
+
+
+
+	<% if comment.user != current_user%>
+		<div class="comment_rating">
+			<% if comment.comment_ratings.where(:user_id => current_user.id).empty? %>
+				<%= link_to "Like", comment_rating_url(comment.id, 1), :class=>"like"%> or <%= link_to "Dislike", comment_rating_url(comment.id, 0), :class=> "dislike" %>
+			<% else %>
+				<%= "#{comment.comment_ratings.where(:value => 1).count} out of #{comment.comment_ratings.count} people liked it" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
+<div class="comment_form">
+	<input id="comment_content" type="text"/>
+	<a href="#" id="comment_submit_button"> submit </a>
+</div>

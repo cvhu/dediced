@@ -1,0 +1,79 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" src="/assets/jquery.smoothDivScroll-1.1-min.js"></script>
+	<link href="/assets/smoothDivScroll.css" media="screen" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function() {	
+
+			$('#content').addClass('home_canvas');
+			$('#header').hide();
+			$('#title').hide();			
+			
+		})
+	</script>
+
+<% end %>
+<!-- <div id="announcements"><div id="sign_up_button"><%= link_to "Subscribe" %></div> or <%= link_to "Peek", yums_path, :id => "peak_button"%> We'll send out more invitations when we are ready! 		
+</div> -->
+
+
+
+<div id="front_banner">
+	<%= image_tag 'dediced_welcome.png', :id => "banner_img"%>
+</div>
+
+
+<div id="features">
+	<div id="makeMeScrollable">
+		<!-- <div class="scrollingHotSpotLeft"></div>
+		<div class="scrollingHotSpotRight"></div> -->
+		<div class="scrollWrapper">
+			<div class="scrollableArea">
+				<div class="feature">
+					<%= image_tag 'panel_cover3.png', :class => "feature_img"%>
+					<div class="feature_description">
+						<div class="feature_title"> Reorganize the Web</div>
+						<div class="feature_caption"> Personalize web content according to your own interest score.</div>
+					</div>
+				</div>
+				<div class="feature">
+					<div class="feature_description">
+						<div class="feature_title"> Your Own Treasure </div>
+						<div class="feature_caption"> Build up your reputation by adding new posts.</div>
+					</div>
+					<%= image_tag 'panel_cover1.png', :class => "feature_img"%>
+				</div>
+				<div class="feature">
+					<%= image_tag 'panel_cover2.png', :class => "feature_img"%>
+					<div class="feature_description">
+						<div class="feature_title"> Authority vs. Interest </div>
+						<div class="feature_caption"> Want to discover new interests? Watch your tastes growing in real-time!</div>
+					</div>
+				</div>
+				<div class="feature">
+					<div class="feature_description">
+						<div class="feature_title"> A Vote That Matters </div>
+						<div class="feature_caption"> Your votes will not only reflect your interests, but also impact your public figure.</div>
+					</div>
+					<%= image_tag 'panel_cover4.png', :class => "feature_img"%>
+				</div>
+				<div class="feature">
+					<%= image_tag 'panel_cover5.png', :class => "feature_img"%>
+					<div class="feature_description">
+						<div class="feature_title"> The Profile Says It All </div>
+						<div class="feature_caption">We provide your very own personalized web content and help you focus on stuff that matters.</div>
+					</div>
+				</div>
+				<div class="feature">
+					<div class="feature_description">
+						<div class="feature_title"> App Coming Soon</div>
+						<div class="feature_caption">Organize and share on the go. A revolution of near-field communication is coming.</div>
+					</div>
+					<%= image_tag 'panel_cover6.png', :class => "feature_img"%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

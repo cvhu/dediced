@@ -1,0 +1,17 @@
+<div id="select_image_form">
+
+	<span class="subtitle"><%="select an image from #{url}" %></span>
+	<ul id="fcbklist">
+		<% img_url(url,url_images)[0..10].each do |image|%>
+			<li> <%= image_tag image%> <%= hidden_field_tag 'img[uri]', image%></li>
+		<% end%>
+	</ul>
+	<script type="text/javascript" language="JavaScript"> 
+	    $(document).ready(function() {
+	      //id(ul id),width,height(element height),row(elements in row)        
+	      $.fcbkListSelection("#fcbklist","400","50","2");
+	    });    
+	</script>
+</div>
+
+<div class="division"> or </div>

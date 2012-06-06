@@ -1,0 +1,51 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">	
+		$(document).ready(function() {
+			
+			if ($('#search-q').length==0){
+				searchFormView();
+			}else{
+				searchResultsView($('#search-q').text());
+			}	
+		})
+
+	</script>
+
+<% end %>
+
+<div id="search-div">
+	<%= image_tag 'logo_dediced.png', :id => "search-logo"%>
+	
+	<div id="search-div-form">		
+		
+		<input class="text" id="search-div-field" name="search" size="40" type="text"/>
+		<a href="#" id="search-div-submit" class="icon search-icon"></a>
+	</div>
+	<div id="search-div-slogan">
+		Bookmark Your Passions.
+	</div>
+	
+	<div id="home-stats">
+		<div class="home-stat">
+			<div class="home-stat-number">
+				<%= @total_yums%>
+			</div>
+			<div class="home-stat-caption">
+				Links
+			</div>
+		</div>
+		<div class="home-stat">
+			<div class="home-stat-number">
+				<%= @total_areas%>
+			</div>
+			<div class="home-stat-caption">
+				Areas
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<% if @q %>
+	<div id="search-q" style="display:none;"><%= @q %></div>
+<% end %>

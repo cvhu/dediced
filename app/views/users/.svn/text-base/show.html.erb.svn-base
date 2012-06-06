@@ -1,0 +1,88 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {			
+			var user_id = $('#user_id').text();
+			$("#user_posts").parent().removeClass('user_tab').addClass('current_tab');
+			$("#profile_content").postsTab(user_id);
+			$("#user_posts").click(function(e){
+				e.preventDefault();
+				$(this).currentTab();
+				$("#profile_content").postsTab(user_id);
+			});
+			$("#user_ups").click(function(e){
+				e.preventDefault();
+				$(this).currentTab();
+				$("#profile_content").upsTab(user_id);
+			});
+			
+			$("#user_areas").click(function(e){
+				e.preventDefault();
+				$(this).currentTab();
+				$("#profile_content").text('');
+				// var interests = $('<div id="user_interests"></div>');
+				var interests = $('<div id="user_interests"><table></table></div>');
+				// var authors = $('<div id="user_authors"></div>');
+				var authors = $('<div id="user_authors"><table></table></div>');
+				$("#profile_content").append(interests).append(authors);
+				$(authors).find('table').authorsSection(user_id);				
+				$(interests).find('table').interestsSection(user_id);
+			});
+			
+			
+			// $('#related_tags').loadUserAreas("/profile/"+$('#user_id').text()+"/related_tags.json");			
+			$('#profile_top_five').loadProfileTopFive(user_id);
+		})
+		
+		jQuery.fn.currentTab = function(){
+			var selector = this;
+			$("#user_tabs li").removeClass('current_tab').addClass('user_tab');
+			$(this).parent().removeClass('user_tab').addClass('current_tab');
+		}
+		
+	</script>
+<% end %>
+<% content_for :header_title do%>
+	profile
+<% end %>
+
+<% content_for :header_subtitle do%>
+	we are what we do
+<% end %>
+
+
+<div id="profile">
+	<div class="left150">
+		<div id="user">
+			<div id="user_id" style="display:none;"><%= @user.id%></div>			
+			<div id="user_name"><%= @user.name %></div>
+			<%= image_tag @user.gravatar(140), :class=>'gravatar140'%>
+			<div id="user_content">
+
+			</div>
+		</div>
+		
+		<div id="profile_top_five">		
+		</div>		
+	</div>
+
+	<div class="right650">
+		<div id="profile_stats">
+			<div class="stats total_posts"><%= @user.totalRating[:posts]%><div class="subscript">post</div></div>
+			<div class="stats total_uped"><%= @user.totalRating[:uped]%><div class="subscript">up</div></div>
+			<div class="stats total_downed"><%= @user.totalRating[:downed]%><div class="subscript">down</div></div>
+		</div>
+		
+		<ul id="user_tabs">
+			<li class="user_tab"> <a href="#" id="user_posts">posts</a></li>
+			<li class="user_tab"> <a href="#" id="user_ups">ups</a></li>
+			<!-- <li class="user_tab"> <a href="#" id="user_areas">areas</a></li> -->
+			<!-- <% if current_user.id==@user.id%>
+				<li class="user_tab"><%= link_to 'edit', edit_user_path(@user), :class=>"user_edit"%></li>
+			<% end %>			 -->
+		</ul>
+
+		<div id="profile_content">
+			
+		</div>
+	</div>
+</div>

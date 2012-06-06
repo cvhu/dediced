@@ -1,0 +1,20 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {			
+			var wrapper = $("#yum_wrapper");
+			var data = jQuery.parseJSON($(wrapper).text());
+			$(wrapper).empty().loadYum(data);
+			$(".cancel").remove();
+		})
+	</script>
+<% end %>
+<% content_for :header_title do%>
+	post analytics
+<% end %>
+
+<% content_for :header_subtitle do%>
+	everything you need to now about this post
+<% end %>
+
+<div id="yum_viewcounts"><%= @viewcounts.count%> view</div>
+<div id="yum_wrapper"><%= @yum_api%></div>

@@ -1,0 +1,24 @@
+<% content_for :top_header do%>
+	log in
+<% end %>
+
+<div id="dialog_title">Don't have an account?  <%= link_to "subscribe", new_pre_user_path, :class=> "passive_link" %> first to get invited!</div>
+
+<%= form_tag sessions_path do %>				
+	<table id="log_in_table">
+		<tbody>
+			<tr class="required">
+				<th> <%= label_tag :email, "email"%> </th>
+	    		<td> <%= text_field_tag :email, params[:email]%> </td>
+			</tr>
+			<tr class="required">
+				<th> <%= label_tag :password %> </th>
+				<td> <%= password_field_tag :password, params[:password], :class=> 'secret'%> </td>
+			</tr>
+			<tr class="submit">				
+				<th> <%= link_to "forgot password?", forgot_password_url, :class=> "passive_link"%></th>
+				<td> <%= submit_tag "log in", :class=>"button" %> </td>
+			</tr>
+	  	</tbody>
+	</table>
+<% end %>

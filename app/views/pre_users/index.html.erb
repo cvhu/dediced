@@ -1,0 +1,31 @@
+<% content_for :top_header do%>
+	administration
+<% end %>
+
+<div id="pre_users">
+	<table>
+	  <tr>
+	    <th>Email</th>
+	    <th>Address</th>
+	    <th></th>
+	    <th></th>
+		<th> token </th>
+	  </tr>
+
+	<% @pre_users.each do |pre_user| %>
+	  <tr>
+	    <td><%= pre_user.email %></td>
+	    <td><%= pre_user.address %></td>
+	    <td>
+			<% if pre_user.token!=nil %>
+				invited <%= link_to '[again?]', invite_path(pre_user)%>
+			<% else %>
+				<%= link_to '[invite]', invite_path(pre_user)%>
+			<% end %>
+		</td>		
+	    <td><%= button_to '[destroy]', pre_user, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= pre_user.token%></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

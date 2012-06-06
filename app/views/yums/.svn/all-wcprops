@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/dediced/!svn/ver/63/trunk/app/views/yums
+END
+search.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/dediced/!svn/ver/63/trunk/app/views/yums/search.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dediced/!svn/ver/64/trunk/app/views/yums/index.html.erb
+END
+getById.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/dediced/!svn/ver/56/trunk/app/views/yums/getById.html.erb
+END
+new_test.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/dediced/!svn/ver/64/trunk/app/views/yums/new_test.html.erb
+END
+_yum.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/dediced/!svn/ver/57/trunk/app/views/yums/_yum.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/dediced/!svn/ver/50/trunk/app/views/yums/new.html.erb
+END
+shake.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dediced/!svn/ver/64/trunk/app/views/yums/shake.html.erb
+END
+_yumlet.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/dediced/!svn/ver/56/trunk/app/views/yums/_yumlet.html.erb
+END
+index.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/dediced/!svn/ver/53/trunk/app/views/yums/index.js.erb
+END
+addNew.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/dediced/!svn/ver/56/trunk/app/views/yums/addNew.html.erb
+END

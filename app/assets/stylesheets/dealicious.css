@@ -1,0 +1,231 @@
+	body{
+		margin: 0;
+		padding: 0;
+		font-family: verdana, arial, helvetica, sans-serif;
+		font-size: 12px;
+		background: #fff;
+		border-top: 7px solid #08f;
+	}
+	#container{
+		width: 800px;
+		margin: 0 auto;
+		background: #fff;
+		
+	}
+	
+
+	
+	#header{
+		height: 5em;
+		background: #fff;
+	}
+	
+	.logo{
+		height: 5em;
+	}
+	
+	.banner{
+		position: relative;
+		top: -.75em;
+		left: .5em;
+		font-size: 24px;
+		color: #aaa;
+		font-weight: bold;
+
+	}
+	
+	#user_nav{
+		position: relative;
+		top: -4em;
+		right: -40em;
+		
+		font-size: 1.25em;
+		color: white;
+		padding: 10px;
+		background-color: rgb(110,176,254);
+		text-align: left;
+		margin-top: 0em;
+		margin-right:2em;
+		-moz-border-radius: 10px;
+		border-radius: 1px 1px 10px 10px;
+		height: 2.25em;
+		width: 15em;
+	}
+	
+	#user_nav #user{
+		margin: 5px;
+	}
+	
+	#user_nav a{
+		color: white;
+		text-decoration: none;
+	}
+	
+	#user_nav .user_image{
+		margin: 0px;
+		float: left;
+		height: 2.25em;
+		width: 2.25em;
+	}
+	
+	
+	#message{
+		filter:alpha(opacity=60);
+/*  			 CSS3 standard */
+		opacity:0.6;
+		font: normal 36px ‘American Typewriter’, ‘Courier New’, Courier, Monaco, mono;			background: white;
+		position: relative;
+		bottom: -50px;
+		right: -100px;
+		background: #00f;
+	}
+
+
+	#contentbox{
+		position: relative;
+		top: -30px;
+		margin: 0;
+		padding: 10px 250px 60px 20px;
+//		opacity:0.6;
+	/*	*/
+	}
+
+
+
+	#content{
+		color: #000;
+		opacity: 1;
+	}
+	
+	#signupnow{
+		padding: 10px;
+		float: right;
+		
+	}
+	
+	
+	#footer{
+		margin: 0 auto;
+		width: 760px;
+		padding: 5px 20px;
+		font-weight: bold;
+	/	color: #fff;
+	}
+	
+	
+	.button{
+		padding: 5px;
+		text-decoration: none;
+		border-radius: 5px;
+		background: #777;
+		color: white;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		font-weight: bold;
+		border: none;
+	}
+
+	
+	
+	a:hover{
+		opacity: 0.5;
+	}
+	
+	#badges{
+		width: 250px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+
+	.user_badge{
+		position: relative;
+		color: white;
+		font-weight: bold;
+		padding: 10px;
+		width: 50px;
+		height: 75px;
+		background: #aaa;
+		text-align: center;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+	}
+	
+	.user_badge img{
+		margin-right: auto;
+		margin-left: auto;
+		width: 50px;
+		height: 50px;
+	}
+	
+	.yum{
+
+		height: 150px;
+	}
+	
+	.yum_content{
+		border: 3px solid #aaa;
+		margin: 0;
+		position: relative;
+		top: -10em;
+		left: 7em;
+		padding: 10px;
+		width: 400px;
+		height: 110px;
+		border-radius: 10px;
+	}
+
+	.yum_content img{
+		position: relative;
+		width: 100px;
+		height: 100px;
+		padding: 10px;
+	}
+	
+	.yum_content_text{
+		position: relative;
+		top: -10em;
+		left: 10em;
+	}
+	
+	.name{
+		font-size: 150%;
+		text-transform: capitalize;
+	}
+	.review{
+		padding-top: 10px;
+		padding: 5px;
+	}
+	
+	.feedback{
+		position: absolute;
+		bottom: -5em;
+	}
+	
+	.feedback a{
+		font-weight: bold;
+		color: #555;
+		text-decoration: none;
+	}
+	
+	a.like{
+		color: rgb(0,64,128);
+	}
+	
+	a.dislike{
+		color: rgb(128,0,0);
+	}
+	
+	.comment_content{
+		border: 3px solid #ddd;
+		margin: 0;
+		position: relative;
+		top: -8em;
+		left: 7em;
+		padding: 10px;
+		width: 400px;
+		height: 50px;
+		border-radius: 10px;
+	}
+	

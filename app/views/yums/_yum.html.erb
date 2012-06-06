@@ -1,0 +1,59 @@
+<div class="yum_wrapper">
+	<div class="yum" id="<%=h yum.id%>">
+		<div class="yum_content">
+		    <div class="yum_content_name">
+				<%= yum.name%>
+			</div>
+			<% unless yum.url == ''%>
+				<div class="yum_content_url link">
+					<%= link_to "page link", yum.url%>
+				</div>
+			<% end %>
+			<%  unless yum.value.nil? %>
+				<div class="yum_content_price">
+					<%="(#{(yum.value)})"%>
+				</div>
+			<% end %>
+			<% unless yum.tags.empty? %>
+				<div class="yum_content_tags">
+					<% yum.tags.each do |tag|%>
+						<div class="yum_content_tag">
+							<%= tag.name%>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="left250">
+			<div class="yum_image">
+				<div class="full250">
+					<%= image_tag yum.img.uri%>
+				</div>
+			</div>
+		</div>
+		<div class="right500">
+		
+
+			<div class="yum_review">
+				<% if yum.user != current_user %>
+					<span class="yum_review_rating">
+						<% if yum.ratings.where(:user_id => current_user.id).empty? %>
+							<%= link_to "Like", yum_rating_url(yum.id, 1), :class=>"like"%> or <%= link_to "Dislike", yum_rating_url(yum.id, 0), :class=> "dislike" %>
+						<% else %>
+							<%= "#{yum.ratings.where(:value => 1).count} out of #{yum.ratings.count} people liked it" %>
+						<% end %>
+					</span>
+				<% end %>
+		
+				<div class="yum_review_user">
+					<%= render :partial => "users/user50", :locals => {:user => yum.user}%>
+				</div>
+				<div class="yum_review_content"><%= yum.review %><span class="yum_review_timestamp"><%= "(#{(yum.created_at)} ago)" %></span></div>				
+				<div class="comments" id="<%= @yum.id%>">
+					<%= render :partial => 'comment', :collection => @comments%>
+					<%= render :partial => 'comment_form', :locals => {:comment => @comment, :yum_id => @yum.id}%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

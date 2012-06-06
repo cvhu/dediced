@@ -1,0 +1,11 @@
+var rating = $('.comment').find('#<%= @comment_rating.comment_id%>').find('.feedback');
+rating.fadeOut();
+<% if @comment_rating.value==1 %>
+	rating
+		.html('you liked it')
+		.fadeIn();
+<% else %>
+	rating
+		.html('you disliked it')
+		.fadeIn();
+<% end %>

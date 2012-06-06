@@ -1,0 +1,88 @@
+<% content_for(:head) do%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var tag_name = $('#area-name').html();
+			if ($("#no_results").length==0){
+				$("#my_yums").loadStream('/api/yums_by_tag/'+tag_name+'.json', 1);
+				// $('#area_top_five').loadAreaTopFive(tag_name);
+				var ac = $('#area-contributors');
+				$.ajax({
+					url: '/api/area/'+tag_name+'/top_contributors.json',
+					beforeSend: function(){
+						$(ac).html('loading...');
+					},
+					success: function(data){
+						$(ac).empty();
+						var title = $('<div id="area-contributors-title"></div>').html(data.length+' Contributors').appendTo(ac);
+						$.each(data, function(i,v){
+							var user = $('<a class="area-contributor"></a>').attr('href', '/@'+v.name).appendTo(ac);
+							var img = $('<img class="area-contributor">').attr('src', v.img).appendTo(user);
+							var user_info = $('<div class="area-contributor-info"></div>').html(v.name+' has '+v.post+' posts'+' with '+v.up+' up votes ('+(parseFloat(v.score)*100).toFixed(2)+'%)').hide().insertAfter(user);
+							$(user).hover(function(){
+								$(user_info).fadeIn();
+							}, function(){
+								$(user_info).fadeOut();
+							})
+							
+						})
+					}
+				})
+				
+				
+			}
+			
+			var wrapper = $('#container>.right-column');
+			var strengths = $('<div id="user-profile-strengths"></div>').appendTo(wrapper);
+			var strengths_title = $('<div id="user-profile-strengths-title"></div>').html('Related Areas').appendTo(strengths);
+			var strengths_content = $('<div id="user-profile-strengths-content"></div>').appendTo(strengths);
+			$.ajax({
+				url: '/api/area/'+tag_name+'/related_areas.json',
+				beforeSend: function(){
+					$(strengths_content).html('loading...');
+				},
+				success: function(data){
+					$(strengths_content).html('');
+					var areas = $('<div id="search-relevant-areas"></div>').appendTo(strengths_content);
+					var related_areas_title = $('<div id="search-related-areas-title"></div>').appendTo(areas);
+					$.each(data, function(i,v){
+						var area = $('<a class="search-relevant-area"></a>').paintScore(v.score).attr('score', v.score).appendTo(areas).attr('href', '/area/'+v.area);
+						$('<div class="search-relevant-area-name"></div>').html(v.area).appendTo(area);
+					})			
+				}
+			});
+			
+		})
+		
+
+	</script>
+<% end %>
+
+<% content_for :header_title do%>
+	area
+<% end %>
+
+<% content_for :header_subtitle do%>
+	manage your interest and expertise
+<% end %>
+<div id="tag">
+	
+	<% if @tag.nil? %>
+		<div id="area-name"><%= params[:tag_name] %></div>	
+		<div id="no_results">No results? Create a new post and be the pioneer in this area!</div>
+		<img id="up_arrow" src="/images/up_arrow.png" />
+	<% else %>
+		<div id="content-wrapper">
+			<div id="stream-wrapper">
+				<div id="profile-area-stats">
+					<div class="profile-area-stats"><div class="profile-area-stats-value"><%= @tag.stats[:posts]%></div><div class="profile-area-stats-subscript">posts</div></div>
+					<div class="profile-area-stats"><div class="profile-area-stats-value"><%= @tag.stats[:ups]%></div><div class="profile-area-stats-subscript">ups</div></div>
+					<div class="profile-area-stats"><div class="profile-area-stats-value"><%= @tag.stats[:downs]%></div><div class="profile-area-stats-subscript">downs</div></div>
+				</div>								
+				
+				<div id="area-name"><%= @tag.name %></div>
+				<div id="area-contributors"></div>
+				<div id="my_yums"></div>
+			</div>
+		</div>
+	<% end %>
+</div>

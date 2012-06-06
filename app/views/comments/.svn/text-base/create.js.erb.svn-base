@@ -1,0 +1,5 @@
+$("<%= escape_javascript(render(:partial => 'comments/comment', :object => @comment)) %>")
+	.insertBefore("#<%=h @comment.yum_id %> .new_comment")
+	.hide()
+	.fadeIn("slow");
+$("#new_comment")[0].reset();

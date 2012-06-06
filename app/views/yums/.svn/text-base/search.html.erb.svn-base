@@ -1,0 +1,42 @@
+
+<% content_for(:head) do%>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$("#search_content").populateElement($("#search_content"), "start typing to search...");			
+			$('#search_content').keyup(function(){
+				var q = $('#search_content').val();
+				if (q.length>=3){
+					delay(function(){
+						$.ajax({
+							url: "/yums_search/"+q+".json", 
+							beforeSend: function(){
+								$("#search_content").addClass('progress');
+							},
+							success: function(data){
+								$("#search_content").removeClass('progress');
+								$('#search_results').text('');
+								$("#search_results").loadYumlets(data);					
+							}
+						});
+					}, 700);					
+				}
+			});
+		})
+	</script>
+<% end %>
+
+<% content_for :top_header do%>
+	search
+<% end %>
+<div class="fixed_top">
+	<div id="search_form">
+		<input class="text" id="search_content" name="search" size="20" type="text" />
+		<a href="#" id="search_button">search</a>
+	</div>
+</div>
+<div id="subcontent">
+	<div id="search_results">
+	</div>
+</div>
