@@ -115,7 +115,7 @@ jQuery.fn.newPostForm = function(title, url){
 	var submit_button = $('<a href="#" id="post_create_button" class="submit_button"> submit </a>');		
 	$(submit_button).click(function(e){
 		e.preventDefault();
-		closeDialog($(selector).parent());
+		// closeDialog($(selector).parent());
 		var name = $(name_input).returnOnlyIfValid();
 		var tags = $(tag_tokens).returnOnlyIfValid();
 		var review = $(review_input).returnOnlyIfValid();
@@ -150,16 +150,18 @@ jQuery.fn.newPostForm = function(title, url){
 		
 		var jsonData = {'yum':yumJSON, 'img':imgJSON};
 		// alert(JSON.stringify(jsonData, null, 2));
-		
+		$('#restart_button').remove();
+		$('#post_preview').remove();
 		$.ajax({
 			url: "/create_yum.json", 
 			data: {'yum':yumJSON, 'img':imgJSON}, 
 			beforeSend: function(){
-				$(selector).find("#add_new").addClass('center_progress');
+				$(selector).empty().loading();
 			},
 			success: function(data){
-				$(selector).find("#add_new").removeClass('center_progress');				
-				openYum(data.yum_api, data.score);
+				$(selector).unloading().loadYumProfile(data.yum_api.yum.token);;				
+				// slideOverToYumProfile(data.yum_api.yum.token);
+				// openYum(data.yum_api.yum.token);
 				
 			}		
 		});	
@@ -295,16 +297,10 @@ function rateComment(comment_id, act){
 	});
 }
 
-function openYum(data, score){
-	var wrapper = $('#yum_wrapper').clone();
-	$(wrapper).addClass('dialog');
-	$(wrapper).loadYum(data, score);
-	$(wrapper).show()
-		.appendTo('#overlay')
-		.parent()
-		.fadeIn('fast');
-		
-	$(".dialog").show();
+function openYum(token){
+	var yum_wrapper = $('<div id="yum-wrapper" class="dialog"></div>').html('<a href="#" class="cancel"> [x]</a>');
+	$(yum_wrapper).loadYumProfile(token);
+	openDialogWithoutClone(yum_wrapper);
 }
 
 
@@ -319,8 +315,46 @@ function openDialog(selector){
 		.show();
 }
 
+function openDialogWithoutClone(selector){
+	$(selector)
+		.find('.ok, .cancel')
+		.live('click', function(){
+			closeDialog(this);
+		})
+		.end()
+		.find('.ok')
+		.live('click', function(){
+		})
+		.end()
+		.find('.cancel')
+		.live('click', function(){
+	});
+	$(selector)
+		.show()
+		.appendTo('#overlay')
+		.parent()
+		.fadeIn('fast')
+		.find(".dialog")
+		.show();
+}
+
 function openNewPost(selector){
 	$(selector)
+		.find('.ok, .cancel')
+		.live('click', function(){
+			closeDialog(this);
+		})
+		.end()
+		.find('.ok')
+		.live('click', function(){
+		})
+		.end()
+		.find('.cancel')
+		.live('click', function(){
+	});
+	
+	$(selector)
+		.addClass('dialog')
 		.clone()
 		.show()
 		.appendTo('#overlay')
@@ -331,9 +365,24 @@ function openNewPost(selector){
 		.show();
 }
 
-
-function openDialogWithoutClone(selector){
+function openAuthenticationRequest(selector){
 	$(selector)
+		.find('.ok, .cancel')
+		.live('click', function(){
+			closeDialog(this);
+		})
+		.end()
+		.find('.ok')
+		.live('click', function(){
+		})
+		.end()
+		.find('.cancel')
+		.live('click', function(){
+	});
+	
+	$(selector)
+		.addClass('dialog')
+		.clone()
 		.show()
 		.appendTo('#overlay')
 		.parent()
@@ -341,6 +390,9 @@ function openDialogWithoutClone(selector){
 		.find(".dialog")
 		.show();
 }
+
+
+
 
 function closeDialog(selector){
 	$(selector)
@@ -2197,44 +2249,20 @@ $(document).ready(function() {
 	
 	
 
-	$('#sign_up_wrapper')
-		.find('.ok, .cancel')
-		.live('click', function(){
-			closeDialog(this);
-		})
-		.end()
-		.find('.ok')
-		.live('click', function(){
-		})
-		.end()
-		.find('.cancel')
-		.live('click', function(){
-	});
 	
 	$('#user-profile').loadProfileBar($('#user-profile').attr('user_id'));
-	var add_new = $("#add_new_wrapper");
+
+	var add_new = $("#add_new_wrapper");	
 	$('#add-new-button').click(function(e){
-		e.preventDefault();		
-		$(add_new).addClass('dialog');		
-		openNewPost(add_new);		
+		e.preventDefault();
+		if ($('#user-profile').attr('user_id')==undefined){
+			openAuthenticationRequest($('#authentication-wrapper'));
+		}else{
+			openNewPost(add_new);
+		}		
 	});
 	
-	
-	$(add_new)
-		.find('.ok, .cancel')
-		.live('click', function(){
-			closeDialog(this);
-		})
-		.end()
-		.find('.ok')
-		.live('click', function(){
-		})
-		.end()
-		.find('.cancel')
-		.live('click', function(){
-	});
-	
-	
+		
 	$('input, textarea, a').focus(function(){
 		$(this).addClass('focused');
 	});
@@ -2393,12 +2421,7 @@ jQuery.fn.loadYumCover = function(api){
 		var hovered = $('<div class="stream-hovered"></div>');
 		$(hovered).on('click',function(e){
 			e.preventDefault();
-			$("#stream-wrapper").hide('slide', {direction:'left'}, 500);
-			$("#content-wrapper").showYumProfile(data.yum.token);
-			var path = '/p/'+data.yum.token;
-			history.pushState({url: path}, path, path);
-			$("#menu-sidebar").fadeOut();
-			$("#search-relevant-areas").fadeOut();		
+			slideOverToYumProfile(data.yum.token);
 		})
 		
 		var view = $('<a href="#" class="stream-hovered-view"></a>').html('<span class="icon content-icon"/> View ').appendTo(hovered);
@@ -2422,12 +2445,22 @@ jQuery.fn.loadYumCover = function(api){
 
 }
 
+function slideOverToYumProfile(token){
+	$("#stream-wrapper").hide('slide', {direction:'left'}, 500);
+	$("#content-wrapper").showYumProfile(token);
+	var path = '/p/'+token;
+	history.pushState({url: path}, path, path);
+	$("#menu-sidebar").fadeOut();
+	$("#search-relevant-areas").fadeOut();		
+	
+}
+
 jQuery.fn.showYumProfile = function(token){
 	var wrapper = this;
 	var yum_profile = $('<div id="slide-yum-profile"></div>');
 	var back_to_stream = $('<a href="#" id="back-to-stream"></a>').html('<span class="icon back-icon"/> Go back').appendTo($('#container>.left-column'));
-	$(yum_profile).loadYumProfile(token);
 	// $(yum_profile).hide().appendTo(wrapper).delay(500).show('slide', {direction: 'right'}, 500);
+	$(yum_profile).loadYumProfile(token);
 	$(yum_profile).hide().appendTo(wrapper).delay(500).fadeIn('fast');
 	$(back_to_stream).click(function(e){
 		e.preventDefault();

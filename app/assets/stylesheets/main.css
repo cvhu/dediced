@@ -1267,6 +1267,7 @@ body{
 
 
 /* == Yum Profile Tools ==*/
+
 #yum-profile-toolbar{
 	width: 100%;
 	display: block;
@@ -1381,11 +1382,19 @@ body{
 	
 }
 
+#yum-wrapper{
+	display: block;
+	background: #fafafa;
+	width: 750px;
+	margin: 50px auto;
+	padding: 25px;
+}
 #yum-profile{
 	width: 700px;
 	margin: 10px auto;
 	padding: 0px;
 	position: relative;
+	background: #fafafa;
 }
 
 
@@ -1398,7 +1407,13 @@ body{
 	vertical-align: top;
 	display: inline-block;
 	font-size: 200%;
+	padding: 0px;
 	margin: 20px 0px;
+	color: #777;
+}
+
+#yum-profile-title:hover{
+	color: #000;
 }
 
 #yum-profile-left{

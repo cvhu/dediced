@@ -1,10 +1,11 @@
 = Meeting 06/02 =
-* [Fixed] Search 'clicking twice'
+* [Fixed Committed] Search 'clicking twice'
+* [Fixed Committed] 'No Related Areas' unnecessary
+* [Fixed] Please log in or sign up for 'No Results'
 * Update latest Preview for new post
-* Please log in or sign up for 'No Results'
 * Back/Forth Browser
-* [Fixed] 'No Related Areas' unnecessary
 * related areas too long
+* Sign In/Sign Up
 
 = Meeting 05/23 =
 
