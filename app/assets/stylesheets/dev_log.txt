@@ -2,7 +2,7 @@
 * [Fixed Committed] Search 'clicking twice'
 * [Fixed Committed] 'No Related Areas' unnecessary
 * [Fixed] Please log in or sign up for 'No Results'
-* Update latest Preview for new post
+* [Fixed] Update latest Preview for new post
 * Back/Forth Browser
 * related areas too long
 * Sign In/Sign Up
