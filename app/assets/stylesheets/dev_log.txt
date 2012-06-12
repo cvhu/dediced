@@ -1,11 +1,27 @@
+= Meeting 06/03 =
+
+Marcos:
+* Error Page
+* FAQ
+* Term of Service
+** Privacy
+* Pick Fonts for text-cover
+
+Vic:
+* More accurate search "May Think"
+* Back/Forth Browser
+* related areas too long
+* Sign In/Sign Up
+
+Pending:
+* Look into Trac
+
+
 = Meeting 06/02 =
 * [Fixed Committed] Search 'clicking twice'
 * [Fixed Committed] 'No Related Areas' unnecessary
 * [Fixed] Please log in or sign up for 'No Results'
 * [Fixed] Update latest Preview for new post
-* Back/Forth Browser
-* related areas too long
-* Sign In/Sign Up
 
 = Meeting 05/23 =
 

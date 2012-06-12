@@ -21,7 +21,7 @@ set :stage, "production"
 # https://help.github.com/articles/deploying-with-capistrano
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-set :deploy_via, :remote_cache
+# set :deploy_via, :remote_cache
 
 # default_environment['PATH']='/usr/local/bin:/usr/bin:/bin:/home/cvhu/.rvm/rubies/ruby-1.9.2-p290/bin/ruby'
 # default_environment['PATH']="/home/cvhu/.rvm/gems/ruby-1.9.2-p290@dediced/bin:/home/cvhu/.rvm/gems/ruby-1.9.2-p290@global/bin:/home/cvhu/.rvm/rubies/ruby-1.9.2-p290/bin:/home/cvhu/.rvm/bin:/home/cvhu/.gems/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"

@@ -7,7 +7,7 @@ class IndexesController < ApplicationController
   end
   
   def searchAPI
-    queries = params[:q]
+    queries = params[:q].split(/\s+/)
     yums = []
     yum_explored = []
     areas = []
@@ -18,12 +18,23 @@ class IndexesController < ApplicationController
       user_id = -1
     end
     
-    queries.split(/\s+/).each do |query|
+    yum_crossed = []
+    queries.each do |query|
       Keyword.search(query).each do |keyword|
         keyword.indexes.each do |index|
           yum = index.yum
           if not yum_explored.include?(yum)
-            yums << {:score => 1.1, :yum_api => yum.api(user_id)}
+            interests = yum.yum_interests.where(:user_id => user_id)
+            if yum.queryMatch(queries)
+              yums.unshift({:score => 1.1, :yum_api => yum.api(user_id)})
+            else
+              if interests.empty?()
+                yums << yum.interestsBy(user_id)
+              else
+                yums << {:score => interests[0].score, :yum_api => yum.api(user_id)}
+              end
+            end
+            # yums << {:score => yum.yum_interests.where(:user_id => user_id), :yum_api => yum.api(user_id)}
             yum_explored << yum
             yum.tags.each do |tag|
               if not area_explored.include?(tag)

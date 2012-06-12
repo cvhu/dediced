@@ -211,5 +211,18 @@ class Yum < ActiveRecord::Base
     end
   end
    
+  def queryMatch(queries)
+    queries.each do |q|
+      k = Keyword.find_by_value(q)
+      if k.nil?()
+        return false
+      else
+        if k.indexes.where(:yum_id => self.id).empty?()
+          return false
+        end
+      end
+    end
+    return true
+  end     
   
 end

@@ -8,10 +8,6 @@ Dediced::Application.routes.draw do
   get "locations/show"
 
   get "new_yum" => "Yums#new", :as => "new_yum"
-  get "log_in" => "Sessions#new", :as => "log_in"
-  get "log_out" => "Sessions#destroy", :as => "log_out"
-
-  get "pool" => "PreUsers#index", :as => "pool"
   get "location_counts" => "Locations#location_counts", :as => "location_counts"
   
   # get "subscribe_validation" => "PreUsers#validation", :as => "subscribe_validation"  
@@ -21,7 +17,7 @@ Dediced::Application.routes.draw do
   match "check_user_by_name" => "Users#checkNames"
   match "search_pre_user_by_email" => "PreUsers#search", :as => "search_pre_user_by_email"
 
-  match "sign_up/:token" => "Users#new", :as => "sign_up"  
+  
   match "subscribe" => "PreUsers#new", :as => "subscribe"
   match "/invite/:pre_user_id" => "PreUsers#invite", :as => "invite"
   match "/forgot_password" => "Users#forgotPassword", :as => "forgot_password"
@@ -119,6 +115,13 @@ Dediced::Application.routes.draw do
   
   match "/stream" => "Yums#stream", :as => "stream"
   match "/search" => "Pages#search", :as => "search"
+  
+  match "/sign_up/:token" => "Users#new", :as => "sign_up"  
+  get "/log_in" => "Sessions#new", :as => "log_in"
+  get "/log_out" => "Sessions#destroy", :as => "log_out"
+
+  get "pool" => "PreUsers#index", :as => "pool"
+  
   
   # Stream
   match "/api/stream/date" => "Yums#streamLatestAPI", :as => "stream_lastest"
