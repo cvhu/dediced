@@ -2146,6 +2146,99 @@ function searchBar(){
 	})
 }
 
+jQuery.fn.validates_sign_up_email = function(){
+	var root = this;
+	var value = $(this).val();
+	var url = '/search_pre_user_by_email.json';
+	if (value == ''){
+		$(root).populateInputHint("email cannot be blank", -1);
+	}
+	else{
+		var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; //^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		if (!emailReg.test(value)){
+			$(root).populateInputHint("invalid email", -1);
+		}
+		else{
+			$.ajax({
+				dataType: "json",
+				url: url+'?email='+value,
+				beforeSend: function(){
+					$(root).addClass('progress');
+				},
+				error: function(){
+					$(root).populateInputHint("Oops, ajax request failed, please try again", -1);
+				},
+				success: function(json){
+					$(root).removeClass('progress');					
+					console.log(json.length);
+					if (json.length>0){
+						$(root).populateInputHint("It seems like you've already subscribed!", -1);
+					}
+					else{
+						var form = $(root).parent().parent();
+						$.ajax({
+							url:"/api/pre_user/create.json?email="+value,
+							beforeSend: function(){
+								$(form).loading();
+							},
+							success: function(data){
+								$(form).unloading();
+								$(form).html(data.message);
+							}
+						})
+						
+						// $(root).populateInputHint("Complete!", 1);
+					}
+				},
+				// complete: function(){
+				// }
+			});
+		}
+	}
+}
+
+function signUp(){
+	$("#user-bar-signup").click(function(e){
+		e.preventDefault();
+		var dialog = $("#dialog_wrapper").clone();
+		$(dialog).addClass("dialog");
+		
+		var wrapper = $('<div id="dialog"></div>');
+		$(dialog).append(wrapper);
+		$(wrapper).append($('<a href="#" class="cancel">[x]</a>'));
+		$(dialog)
+			.find('.ok, .cancel')
+			.live('click', function(e){
+				e.preventDefault();
+				closeDialog(this);
+			})
+			.end()
+			.find('.ok')
+			.live('click', function(){
+			})
+			.end()
+			.find('.cancel')
+			.live('click', function(){
+		});
+		var form = $('<div id="sign-up-wrapper"></div>').appendTo(wrapper);
+		var title = $('<div class="title">Sign up to join us!</div>').prependTo(wrapper);
+		var email_div = $('<div class="label-prepopulate sign-up-field"></div>').appendTo(form);
+		var email_label = $('<label for="email"></label>').text('Email').appendTo(email_div);
+		var email_input = $('<input id="email" name="email" type="text">').appendTo(email_div);
+		var submit = $('<input class="sign-up-submit-button" name="commit" type="submit" value="sign up">').appendTo(form);
+		$(email_div).labelPrepopulate();
+		$(submit).click(function(e){
+			e.preventDefault();
+			$(email_input).validates_sign_up_email();
+		})
+		$(dialog).show()
+			.appendTo("#overlay")
+			.parent()
+			.fadeIn('fast');
+		$(".dialog").show();
+	});
+}
+
 function feedback(){
 	$("#feedback").click(function(e){
 		e.preventDefault();
@@ -2155,10 +2248,11 @@ function feedback(){
 		var wrapper = $('<div id="dialog"></div>');
 		$(dialog).append(wrapper);
 		$(wrapper).append($('<a href="#" class="cancel">[x]</a>'));
-		$(wrapper)
+		$(dialog)
 			.find('.ok, .cancel')
-			.live('click', function(){
-				closeYumDialog(this);
+			.live('click', function(e){
+				e.preventDefault();
+				closeDialog(this);
 			})
 			.end()
 			.find('.ok')
@@ -2240,12 +2334,12 @@ $(window).bind("popstate", function(e) {
 // ################# Dediced 0.7
 
 $(document).ready(function() {
-	$('#user-bar-signup').click(function(e){
-		e.preventDefault();
-		var wrapper = $('#sign_up_wrapper').clone().addClass('dialog');
-		$(wrapper).prepareSubscribe();
-		openDialogWithoutClone($(wrapper));				
-	});
+	// $('#user-bar-signup').click(function(e){
+	// 	e.preventDefault();
+	// 	var wrapper = $('#sign_up_wrapper').clone().addClass('dialog');
+	// 	$(wrapper).prepareSubscribe();
+	// 	openDialogWithoutClone($(wrapper));				
+	// });
 	
 	
 
@@ -2278,6 +2372,7 @@ $(document).ready(function() {
 	searchSetup(field, submit);
 	
 	feedback();
+	signUp();
 
 })
 

@@ -1,11 +1,15 @@
 <% content_for(:head) do%>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			$("#user_name").populateTableInputHint("required", -1);
+			// $("#user_name").populateTableInputHint("required", -1);
 			$("#user_name").keyup(function(){
 				$(this).validatesUsername();
-			});
-			$("#sign_up_table").confirmPassword();
+			}).validatesUsername();
+			$("#sign-up-confirmation-wrapper").confirmPassword();
+			
+			$.each($('.label-prepopulate'), function(i,v){
+				$(v).labelPrepopulate();
+			})			
 		})
 	</script>
 <% end %>
@@ -14,44 +18,65 @@
 	welcome!
 <% end %>
 
-<div id="sign_up_wrapper">
-	<div id="sign_up">
-		<div id="dialog_title"> Sign Up </div>
-		<% if @pre_user.nil? %>
-			<p> Sorry, but you can only sign up through our invitation email </p>		
+<div id="sign-up-confirmation-wrapper">
+	<!-- <div id="title"> Sign Up </div> -->
+	<% if @pre_user.nil? %>
+		<p> Sorry, but you can only sign up through our invitation email </p>		
+	<% else %>
+		<% if !User.find_by_email(@pre_user.email).nil? %>
+			<p> It seems like you've already signed up. If this is a mistake, please go to<%= link_to " here ", forgot_password_url, :class=> "passive_link"%> to reset your password or <a href="mailto:info@dediced.com"> contact us</a></p>
 		<% else %>
-			<% if !User.find_by_email(@pre_user.email).nil? %>
-				<p> It seems like you've already signed up. If this is a mistake, please go to<%= link_to " here ", forgot_password_url, :class=> "passive_link"%> to reset your password or <a href="mailto:info@dediced.com"> contact us</a></p>
-			<% else %>
-				<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <%= f.error_messages %>
-				  	<table id="sign_up_table" class=".form">
-						<tbody>
-							<tr class= "required" id="email">
-					  			<th> <%= f.label :email, "e-mail"%> </th>
-								<td> <%= @pre_user.email%> <%= hidden_field_tag "user[email]", @pre_user.email%> </td>
-							</tr>
-							<tr class="required", id="name">
-								<th> <%= f.label :name, "username"%> </th>
-					    		<td> <%= f.text_field :name, :class => "field"%> </td>
-							</tr>						
-					  		<tr class="required", id="password">
-								<th> <%= f.label :password, "password" %> </th>
-					    		<td> <%= f.password_field :password, :class => "field"%> </td>
-							</tr>
-					  		<tr class="required", id="password_confirmation">
-								<th> <%= f.label :password_confirmation, "password confirmation" %> </th>
-					    		<td> <%= f.password_field :password_confirmation, :class => "field"%> </td>
-							</tr>  		
+			<%= form_for @user, :html => {:multipart => true} do |f| %>
+			  <%= f.error_messages %>
+			  	<!-- <table id="sign_up_table" class=".form">
+					<tbody>
+						<tr class= "required" id="email">
+				  			<th> <%= f.label :email, "email"%> </th>
+							<td> <%= @pre_user.email%> <%= hidden_field_tag "user[email]", @pre_user.email%> </td>
+						</tr>
+						<tr class="required", id="name">
+							<th> <%= f.label :name, "username"%> </th>
+				    		<td> <%= f.text_field :name, :class => "field"%> </td>
+						</tr>						
+				  		<tr class="required", id="password">
+							<th> <%= f.label :password, "password" %> </th>
+				    		<td> <%= f.password_field :password, :class => "field"%> </td>
+						</tr>
+				  		<tr class="required", id="password_confirmation">
+							<th> <%= f.label :password_confirmation, "password confirmation" %> </th>
+				    		<td> <%= f.password_field :password_confirmation, :class => "field"%> </td>
+						</tr>  		
 
-							<tr class="submit">				
-								<th> </th>
-								<td> <%= f.submit "Sign Up", :class => "submit_button"%> </td>
-							</tr>
-					  	</tbody>
-					</table>
-				<% end %>
+						<tr class="submit">				
+							<th> </th>
+							<td> <%= f.submit "Sign Up", :class => "submit_button"%> </td>
+						</tr>
+				  	</tbody>
+				</table> -->
+						<div id="sign-up-email">
+				  			<%= f.label :email, "Sign-up confirmation for email:"%>
+							<%= @pre_user.email%> <%= hidden_field_tag "user[email]", @pre_user.email%>
+						</div>
+						
+						<div class="required label-prepopulate" id="name">
+							<%= f.label :name, "username"%>
+				    		<%= f.text_field :name, :value => ""%>
+						</div>						
+						
+				  		<div class="required label-prepopulate" id="password">
+							<%= f.label :password, "password" %>
+				    		<%= f.password_field :password%>
+						</div>
+						
+				  		<div class="required label-prepopulate" id="password_confirmation">
+							<%= f.label :password_confirmation, "password confirmation" %>
+				    		<%= f.password_field :password_confirmation%>
+						</div>  		
+
+						<div class="submit">
+							<%= f.submit "Sign Up", :class => "submit_button"%>
+						</div>
 			<% end %>
 		<% end %>
-	</div>
+	<% end %>
 </div>

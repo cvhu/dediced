@@ -1,6 +1,6 @@
 class PreUsersController < ApplicationController
   
-  before_filter :authenticate, :except => ["new", "show", "create", "search", "createPreUser"]
+  before_filter :authenticate, :except => ["new", "show", "create", "search", "createPreUser", "createAPI"]
   # GET /pre_users
   # GET /pre_users.xml
   
@@ -107,6 +107,21 @@ class PreUsersController < ApplicationController
       PreUserMailer.subscribe_welcome_email(@preuser).deliver 
     else
       flash[:error] = "failed"
+    end
+  end
+  
+  def createAPI
+    @pre_user = PreUser.new()
+    @pre_user.email = params[:email]
+    @pre_user.token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    if @pre_user.save
+      message = 'Thank you! Please check your email to confirm.'    
+      PreUserMailer.sign_up_email(@pre_user, sign_up_url(@pre_user.token)).deliver   
+    else
+      message = 'Sorry something went wrong X( We will look into this issue as soon as we can!'
+    end
+    respond_to do |format|
+      format.json {render :json => {:message => message}.to_json}
     end
   end
   

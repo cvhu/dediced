@@ -18,7 +18,7 @@ Dediced::Application.routes.draw do
   match "search_pre_user_by_email" => "PreUsers#search", :as => "search_pre_user_by_email"
 
   
-  match "subscribe" => "PreUsers#new", :as => "subscribe"
+  # match "subscribe" => "PreUsers#new", :as => "subscribe"
   match "/invite/:pre_user_id" => "PreUsers#invite", :as => "invite"
   match "/forgot_password" => "Users#forgotPassword", :as => "forgot_password"
   match "/reset_password/:token" => "Users#resetPassword", :as => "reset_password"
@@ -116,7 +116,11 @@ Dediced::Application.routes.draw do
   match "/stream" => "Yums#stream", :as => "stream"
   match "/search" => "Pages#search", :as => "search"
   
+  match "/sign_up" => "PreUsers#new"
   match "/sign_up/:token" => "Users#new", :as => "sign_up"  
+  
+  match "/api/pre_user/create" => "PreUsers#createAPI"
+  
   get "/log_in" => "Sessions#new", :as => "log_in"
   get "/log_out" => "Sessions#destroy", :as => "log_out"
 

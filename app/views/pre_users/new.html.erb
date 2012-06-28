@@ -1,79 +1,87 @@
-<% content_for(:head) do%>
-	<script type="text/javascript" src="/assets/jquery.smoothDivScroll-1.1-min.js"></script>
-	<link href="/assets/smoothDivScroll.css" media="screen" rel="stylesheet" type="text/css">
-
-	<script type="text/javascript" charset="utf-8">	
-		$(document).ready(function() {	
-
-			$('#content').addClass('home_canvas');
-			$('#header').hide();
-			$('#title').hide();			
+<% content_for :head do %>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$.each($('.label-prepopulate'), function(i,v){
+				$(v).labelPrepopulate();
+			})
 			
+			
+			$('.sign-up-submit-button').click(function(e){
+				e.preventDefault(e);
+				$('#email').validates_sign_up_email();
+				if ($('.invalid').length==0){
+					// alert('yay!');
+					$.ajax({
+						url:"/api/pre_user/create.json?email="+$('#email').val(),
+						beforeSend: function(){
+							$('#sign-up-wrapper').loading();
+						},
+						success: function(data){
+							$('#sign-up-wrapper').unloading();
+							$('#sign-up-wrapper').html(data.message);
+						}
+					})
+				}
+			});			
 		})
+		
+		jQuery.fn.validates_sign_up_email = function(){
+			var root = this;
+			var value = $(this).val();
+			var url = '/search_pre_user_by_email.json';
+			if (value == ''){
+				$(root).populateInputHint("email cannot be blank", -1);
+			}
+			else{
+				var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; //^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+				if (!emailReg.test(value)){
+					$(root).populateInputHint("invalid email", -1);
+				}
+				else{
+					$.ajax({
+						dataType: "json",
+						url: url+'?email='+value,
+						beforeSend: function(){
+							$(root).addClass('progress');
+						},
+						error: function(){
+							$(root).populateInputHint("Oops, ajax request failed, please try again", -1);
+						},
+						success: function(json){
+							var taken = 0;
+							$(root).removeClass('progress');					
+							$.each(json, function(){						
+
+								if(value == this.pre_user.email){
+
+									taken = 1;
+								}
+							});			
+
+							if (taken == 1){
+								$(root).populateInputHint("It seems like you've already subscribed!", -1);
+							}
+							else{
+								$(root).populateInputHint("Complete!", 1);
+							}
+						},
+						// complete: function(){
+						// }
+					});
+				}
+			}
+		}
 	</script>
-
 <% end %>
-<!-- <div id="announcements"><div id="sign_up_button"><%= link_to "Subscribe" %></div> or <%= link_to "Peek", yums_path, :id => "peak_button"%> We'll send out more invitations when we are ready! 		
-</div> -->
 
+<% content_for :top_header do%>
+	sign up
+<% end %>
 
-
-<div id="front_banner">
-	<%= image_tag 'dediced_welcome.png', :id => "banner_img"%>
-</div>
-
-
-<div id="features">
-	<div id="makeMeScrollable">
-		<!-- <div class="scrollingHotSpotLeft"></div>
-		<div class="scrollingHotSpotRight"></div> -->
-		<div class="scrollWrapper">
-			<div class="scrollableArea">
-				<div class="feature">
-					<%= image_tag 'panel_cover3.png', :class => "feature_img"%>
-					<div class="feature_description">
-						<div class="feature_title"> Reorganize the Web</div>
-						<div class="feature_caption"> Personalize web content according to your own interest score.</div>
-					</div>
-				</div>
-				<div class="feature">
-					<div class="feature_description">
-						<div class="feature_title"> Your Own Treasure </div>
-						<div class="feature_caption"> Build up your reputation by adding new posts.</div>
-					</div>
-					<%= image_tag 'panel_cover1.png', :class => "feature_img"%>
-				</div>
-				<div class="feature">
-					<%= image_tag 'panel_cover2.png', :class => "feature_img"%>
-					<div class="feature_description">
-						<div class="feature_title"> Authority vs. Interest </div>
-						<div class="feature_caption"> Want to discover new interests? Watch your tastes growing in real-time!</div>
-					</div>
-				</div>
-				<div class="feature">
-					<div class="feature_description">
-						<div class="feature_title"> A Vote That Matters </div>
-						<div class="feature_caption"> Your votes will not only reflect your interests, but also impact your public figure.</div>
-					</div>
-					<%= image_tag 'panel_cover4.png', :class => "feature_img"%>
-				</div>
-				<div class="feature">
-					<%= image_tag 'panel_cover5.png', :class => "feature_img"%>
-					<div class="feature_description">
-						<div class="feature_title"> The Profile Says It All </div>
-						<div class="feature_caption">We provide your very own personalized web content and help you focus on stuff that matters.</div>
-					</div>
-				</div>
-				<div class="feature">
-					<div class="feature_description">
-						<div class="feature_title"> App Coming Soon</div>
-						<div class="feature_caption">Organize and share on the go. A revolution of near-field communication is coming.</div>
-					</div>
-					<%= image_tag 'panel_cover6.png', :class => "feature_img"%>
-				</div>
-			</div>
-		</div>
+<div id="sign-up-wrapper">
+	<div class="label-prepopulate sign-up-field">
+		<%= label_tag :email %>
+ 		<%= text_field_tag :email, params[:email]%>
 	</div>
-
-
+	<%= submit_tag "sign up", :class=>"sign-up-submit-button" %>
 </div>

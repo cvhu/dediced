@@ -1,3 +1,8 @@
+= Meeting 06/13 =
+* Close pop-ups
+* Auto-complete emails
+* Dead-simple Sign-up
+
 = Meeting 06/03 =
 
 Marcos:
@@ -27,4 +32,4 @@ Pending:
 
 V make footer one line
 V make cover as the 'go to' button
-V view
+V view 

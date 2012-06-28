@@ -337,7 +337,7 @@ a.dislike{
 	margin: 10px 0px 20px 0px;
 }
 
-#user_name{
+/*#user_name{
 	color: #777;
 	font-weight: bold;
 	float: left;
@@ -345,7 +345,7 @@ a.dislike{
 	padding: 5px;
 	margin: 5px;
 }
-
+*/
 #user_content{
 	margin-top: 10px;
 	float:left;
@@ -777,13 +777,15 @@ a.dislike{
 
 .submit_button{
 	border-radius: 3px;
-	clear: both;
+/*	clear: both;
 	float: left;
 	font-size: 150%;
-	margin: 5px;
+ */	
+	width: 150px;
+	margin: 15px auto;
 	padding: 5px;
-	background: #0f5;
-	color: #fff;
+/*	background: #0f5;*/
+/*	color: #fff;*/
 }
 
 #post_url{

@@ -8,7 +8,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
 
-  <%= javascript_include_tag "application","jquery.tokeninput", "imageselection", "jquery.validate", "jquery.hoverIntent" %>  
+  <%= javascript_include_tag "application","jquery.tokeninput", "imageselection", "jquery.validate", "jquery.hoverIntent", "jquery.prettyPhoto" %>  
   <%= csrf_meta_tag %>
   <%= yield(:head)%>
 <script type="text/javascript">
@@ -55,7 +55,7 @@
 							</li>						
 						<% else %>
 							<li><a href="/log_in" id="user-bar-login"> Log In</a></li>
-							<li><a href="/sign_up" id="user-bar-signup"> Sign Up</a></li>
+							<li><a href="#" id="user-bar-signup"> Sign Up</a></li>
 						<% end %>
 					</ul>
 				</div>
@@ -148,12 +148,12 @@
 		</div>
 	
 	</div>
-	<div id="sign_up_wrapper" style="display:none;">
+	<!-- <div id="sign_up_wrapper" style="display:none;">
 		<div id="sign_up_form" class="form">
 			<div id="dialog_title"> subscribe</div>
 			<a href="#" class="cancel"> [x]</a>		
 		</div>	
-	</div>
+	</div> -->
 	
 	<div id="authentication-wrapper" style="display:none;">
 		<div id="sign_up_form" class="form">
