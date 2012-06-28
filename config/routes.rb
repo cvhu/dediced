@@ -126,6 +126,7 @@ Dediced::Application.routes.draw do
 
   get "pool" => "PreUsers#index", :as => "pool"
   
+  get "/admin" => "Pages#admin"
   
   # Stream
   match "/api/stream/date" => "Yums#streamLatestAPI", :as => "stream_lastest"

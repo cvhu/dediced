@@ -1,0 +1,18 @@
+<table id="admin">
+	<tr>
+		<th> Name </th>
+		<th> Email </th>
+		<th> Yum count </th>
+		<th> Up votes </th>
+		<th> Down votes </th>
+	</tr>
+	<% @users.each do |user|%>
+		<tr>
+			<td><%= user.name %> </td>
+			<td><%= user.email %> </td>
+			<td><%= user.yums.count %> </td>
+			<td><%= user.ratings.where(:value => 1).count %> </td>
+			<td><%= user.ratings.where(:value => -1).count %> </td>
+		</tr>
+	<% end %>
+</table>

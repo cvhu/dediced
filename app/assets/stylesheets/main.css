@@ -2346,3 +2346,26 @@ body{
 .cover-link:hover{
 	opacity: 0.7;
 }
+
+/*== Admin ==*/
+#admin{
+	margin: 20px auto;
+	font-size: 120%;
+}
+
+#admin tr:hover{
+	background: #fa0;
+}
+
+#admin th{
+	padding: 5px 10px;
+}
+
+#admin td{	
+	text-align: right;
+	padding: 5px 15px;
+}
+
+#admin tr:nth-child(odd){
+	background: #eee;
+}
