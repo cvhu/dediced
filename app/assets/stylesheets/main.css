@@ -984,6 +984,29 @@ body{
 }
 
 /*== Sign Up Confirm Form*/
+#authentication-login{
+	display: inline-block;
+	color: #fff;
+	border-radius: 5px;
+	padding: 5px;
+	background: #0af;
+}
+
+#signup-notice{
+	width: 300px;
+	margin: 0px auto;
+	font-size: 120%;
+	text-align: right;
+}
+
+#signup-notice a{
+	display: inline-block;
+	color: #fff;
+	border-radius: 5px;
+	padding: 5px;
+	background: #0d7;
+}
+
 #sign-up-confirmation-wrapper{
 	box-shadow: 0px 0px 15px #aaa;
 	width: 400px;
@@ -2354,7 +2377,7 @@ body{
 }
 
 #admin tr:hover{
-	background: #fa0;
+	background: #fa0 !important;
 }
 
 #admin th{

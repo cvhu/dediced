@@ -23,14 +23,17 @@ var urlReg = /^(\s)*(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-
 
 jQuery.fn.newPost = function(){
 	var selector = this;
+	// $(selector).text('');
 	$(selector).hide();
 	var cancel_button = $('<a href="#" class="cancel"> [x]</a>');
 	var instruction = $("<div id='add_new_instruction'>Add a New Post:</div>");
 	var url_input = $('<input id="post_url" name="yum[url]" size="20" type="text" />');
 	$(url_input).prepopulateElement("http://example.com");
-	var go_button = $('<a href="#" id="go_button"> go </a>');			
+	var go_button = $('<a href="#" id="go_button"> next </a>');			
 	$(selector).text('');
-	$(selector).append(cancel_button).append(instruction).append(url_input).append(go_button).fadeIn();						
+	var wrapper = $('<div id="add-new-form-wrapper"></div>');
+	$(selector).append(cancel_button).append(instruction).append(url_input).append(go_button).append(wrapper).fadeIn();
+	
 	
 	$(url_input).keypress(function(event){
 		if (event.keyCode == 13){
@@ -58,21 +61,21 @@ jQuery.fn.newPost = function(){
 				$(url_input).addClass('progress');
 			},
 			success: function(data){
+				$(go_button).html('redo');
 				$(url_input).removeClass('progress');
-				$(url_input).hide();
-				$(go_button).hide();	
+				// $(url_input).hide();
+				// $(go_button).hide();	
 				var post_preview = $('<div id="post_preview"></div>').html(data);
 				var post_form = $('<div id="new_post_form" class="form"></div>');
 				$(post_preview).buildCoverFlow(data, url);
 				$(post_form).newPostForm(data.title, url);
-				$(selector).hide();
-				var restart_button = $('<a id="restart_button" href="#"><< start over</a>');
-				$(restart_button).click(function(e){
-					e.preventDefault();
-					$(selector).newPost();
-				})
-				$(selector).text('');
-				$(selector).append(cancel_button).append(restart_button).append(post_preview).append(post_form);
+				$(wrapper).hide();
+				// var restart_button = $('<a id="restart_button" href="#"><< start over</a>');
+				// $(restart_button).click(function(e){
+				// 	e.preventDefault();
+				// 	$(selector).newPost();
+				// })						
+				$(wrapper).empty().append(cancel_button).append(post_preview).append(post_form);
 				$("#tag_tokens").tokenInput("/tags.json", {
 				    crossDomain: false,
 				    prePopulate: $("#tag_tokens").data("pre"),
@@ -81,7 +84,11 @@ jQuery.fn.newPost = function(){
 			  	});
 				$("#tag_tokens").populateInputHint('at least one area is required', -1);
 				$("#tag_tokens").prepopulateTokenElement('add area...');				
-				$(selector).fadeIn();	
+				$(wrapper).fadeIn();	
+				
+				$(url_input).keyup(function(){
+					$(wrapper).empty();
+				})
 			}
 		});
 	}
@@ -1725,7 +1732,7 @@ jQuery.fn.validatesUsername = function(){
 	else{
 		var emailReg = /^[A-Za-z](?=[A-Za-z0-9_.]{3,31}$)[a-zA-Z0-9_]*\.?[a-zA-Z0-9_]*$/;
 		if (!emailReg.test(value)){
-			$(selector).populateTableInputHint("invalid username. Use 4 to 32 characters and start with a letter. You may use letters, numbers, underscores, and one dot (.)", -1);
+			$(selector).populateTableInputHint("No spaces. Use 4 to 32 characters and start with a letter. You may use letters, numbers, underscores, and one dot (.)", -1);
 		}
 		else{
 			$.ajax({
@@ -2197,8 +2204,8 @@ jQuery.fn.validates_sign_up_email = function(){
 	}
 }
 
-function signUp(){
-	$("#user-bar-signup").click(function(e){
+function signUp(selector){
+	$(selector).click(function(e){
 		e.preventDefault();
 		var dialog = $("#dialog_wrapper").clone();
 		$(dialog).addClass("dialog");
@@ -2372,7 +2379,7 @@ $(document).ready(function() {
 	searchSetup(field, submit);
 	
 	feedback();
-	signUp();
+	signUp($("#user-bar-signup"));
 
 })
 

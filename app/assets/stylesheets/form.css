@@ -417,7 +417,8 @@ input, textarea{
 }
 
 .submit_hint{
-	position: absolute;
+	clear: both;
+/*	position: absolute;*/
 /*	clear: both;
 	float: right;
 */	font-size: 100%;

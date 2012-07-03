@@ -4,6 +4,8 @@
 			$.each($('.label-prepopulate'), function(i,v){
 				$(v).labelPrepopulate();
 			})
+			
+			signUp($("#alternative-signup"));
 		})
 	</script>
 <% end %>
@@ -12,7 +14,9 @@
 	log in
 <% end %>
 
+
 <div id="log-in-wrapper">
+	
 	<%= form_tag sessions_path do %>
 		<div class="label-prepopulate log-in-field">
 			<%= label_tag :email %>
@@ -28,3 +32,5 @@
 		<%= submit_tag "log in", :class=>"log-in-submit-button" %>
 	<% end %>
 </div>
+
+<div id="signup-notice">Not a member yet? <a href="#" id="alternative-signup"> Sign up</a> first.</div>

@@ -130,7 +130,7 @@ class PreUsersController < ApplicationController
   
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == "admin" && password == "dealicious2011"
+      username == "adminmv" && password == "dealicious2011"
     end
   end
 end

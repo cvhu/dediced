@@ -10,49 +10,44 @@ padding: 0;
 font-family: arial, helvetica, sans-serif;
 font-size: 12px;
 background: #fff;">
-	<div id="message_container" style="margin: 0 auto 0 auto;width: 600px;">
-		<div id="header" class="fixed_top">
-					<span class="logo">
-						<a style="clear: both;float: left;height: 80px;" href="/">
-							<img src="http://dediced.com/assets/dediced.png" height="80px" alt="dediced.com" />
-						</a> 
-					
-					</span>
-					<span class="banner" style="margin-top: 23px;
-					float: left;
-					font-size: 37px;
-					color: #777;"> 	Congratulations!
-		</span>
-				</div>
-			<div id="message_box" style="	clear: both;
-				border-radius: 5px;
-				border: 3px solid #ccc;
-			    margin: 0 auto 0 auto;
-			    width: 600px;
-			    background: #eee;
-			    padding: 20px 20px 20px 20px;
+	<div id="message_container" style="border-radius: 0px; margin: 30px auto;width: 600px; border: 1px solid #ddd; box-shadow: 0px 0px 15px #aaa">
+			<div id="header" class="fixed_top" style="background: #eee">
+				<span class="logo">
+					<a style="height: 80px;" href="/">
+						<img src="http://dediced.com/assets/logo_dediced.png" height="80px" alt="dediced.com" />
+					</a> 
+
+				</span>
+				<span class="banner" style="margin-top: 23px;font-size: 37px;color: #777;">
+				</span>
+			</div>
+			<div id="message_box" style="
+			    background: #fff;
+			    padding: 20px 20px 10px 20px;
 				color: #333;">
 				<div id="message_content" style="width: 90%;
 				margin-left: 20px;
 				margin-right: auto;
 				margin-top: 10px;
-				margin-bottom: 20px; color: #555">
-				<div id="message_title">Hi <%= @pre_user.email%>, you are invited to join our first user group!</div>		
+				margin-bottom: 10px; color: #555">
+					Thanks for the waiting! Now we are ready to serve you with our exclusive bookmarking platform.</div>		
 
-				<p>Please click <%= link_to "here", @sign_up_url%> to sign up!</p>
+					<p>Please click <%= link_to "here", @sign_up_url%> to sign up!</p>
 				
-				<p>Or use the following link <%= @sign_up_url%></p>
-				<p> Please note that only the latest invitation sent from us has been enabled.</p>
-				<p> Thanks, <p>
-				<p> The Dediced team</p>
+					<p>Or use the following link <%= @sign_up_url%></p>
+					<p> Please note that only the latest invitation sent from us has been enabled.</p>
+					<p> Welcome aboard! <p>
+					<p> The Dediced team</p>
 				</div>
-				<div id="message_footer" style="color: #777;
+				<div id="message_footer" style="color: #aaa;
 				font-weight: bold;
 				font-size: 85%;
 				clear: both;
 				margin-top: 20px;
-				text-align: right;"><span> info@dediced.com &copy; 2011-2012 .Dediced LLC All rights reserved.</span> </div>
+				text-align: right;"><span> info@dediced.com &copy; 2011-2012 .Dediced LLC All rights reserved.</span> 
+				</div>
 			</div>
 	</div>	
 </body>
 </html>
+

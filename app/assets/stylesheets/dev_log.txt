@@ -1,3 +1,13 @@
+= Meeting 06/27 =
+* Sign Up/Log In after adding new post.
+* Single adding form (sliding down)
+* Share after adding new doesn't work properly
+* auto-complete emails
+* User profile empty + New user tutorial
+* Hint for making username one word
+
+* Terms of Use is
+
 = Meeting 06/13 =
 * Close pop-ups
 * Auto-complete emails
@@ -33,3 +43,9 @@ Pending:
 V make footer one line
 V make cover as the 'go to' button
 V view 
+
+
+rake tmp:pids:clear
+ 1689  rake tmp:sessions:clear
+ 1690  rake tmp:sockets:clear
+ 1691  rake tmp:cache:clear
