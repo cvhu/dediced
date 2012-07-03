@@ -7,6 +7,9 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 gem 'mysql2'
+gem 'pg'
+
+gem 'therubyracer'
 
 gem 'nokogiri'
 
@@ -41,4 +44,13 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+end
+
+
+group :development, :test do 
+	if RUBY_VERSION =~ /1.9/ 
+		gem 'ruby-debug19' 
+	else 
+		gem 'ruby-debug' 
+	end 
 end
