@@ -3043,7 +3043,7 @@ function searchResultsView(query){
 	$('#menu-sidebar').fadeIn();
 	var wrapper = $('<div id="content-wrapper"></div>').appendTo($('#content'));
 	var results = $('<div id="stream-wrapper"></div>').appendTo(wrapper);
-	$(field).focus().val(query);
+	$(field).focus().val(query);	
 	$(field).searchLive();
 	
 }

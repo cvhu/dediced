@@ -54,3 +54,5 @@ group :development, :test do
 		gem 'ruby-debug' 
 	end 
 end
+
+gem 'taps'
