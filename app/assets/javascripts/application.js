@@ -75,7 +75,7 @@ jQuery.fn.newPost = function(){
 				// 	e.preventDefault();
 				// 	$(selector).newPost();
 				// })						
-				$(wrapper).empty().append(cancel_button).append(post_preview).append(post_form);
+				$(wrapper).empty().append(post_preview).append(post_form);
 				$("#tag_tokens").tokenInput("/tags.json", {
 				    crossDomain: false,
 				    prePopulate: $("#tag_tokens").data("pre"),
@@ -87,7 +87,7 @@ jQuery.fn.newPost = function(){
 				$(wrapper).fadeIn();	
 				
 				$(url_input).keyup(function(){
-					$(wrapper).empty();
+					$(wrapper).text('');
 				})
 			}
 		});
