@@ -29,7 +29,7 @@ jQuery.fn.newPost = function(){
 	var instruction = $("<div id='add_new_instruction'>Add a New Post:</div>");
 	var url_input = $('<input id="post_url" name="yum[url]" size="20" type="text" />');
 	$(url_input).prepopulateElement("http://example.com");
-	var go_button = $('<a href="#" id="go_button"> next </a>');			
+	var go_button = $('<a href="#" id="go_button"></a>').html('add');			
 	$(selector).text('');
 	var wrapper = $('<div id="add-new-form-wrapper"></div>');
 	$(selector).append(cancel_button).append(instruction).append(url_input).append(go_button).append(wrapper).fadeIn();
@@ -61,7 +61,7 @@ jQuery.fn.newPost = function(){
 				$(url_input).addClass('progress');
 			},
 			success: function(data){
-				$(go_button).html('redo');
+				$(go_button).fadeOut();
 				$(url_input).removeClass('progress');
 				// $(url_input).hide();
 				// $(go_button).hide();	
@@ -88,6 +88,7 @@ jQuery.fn.newPost = function(){
 				
 				$(url_input).keyup(function(){
 					$(wrapper).text('');
+					$(go_button).fadeIn();
 				})
 			}
 		});
@@ -99,7 +100,7 @@ jQuery.fn.newPost = function(){
 
 jQuery.fn.newPostForm = function(title, url){
 	var selector = this;
-	var display_url = $('<div id="display_url"></div>').text(url);
+	// var display_url = $('<div id="display_url"></div>').text(url);
 	var name_input = $('<input id="post_name" name="yum[name]" size="40" type="text" />').val(title);
 	$(name_input).prepopulateElement("Post Title");
 	$(name_input).populateInputHint('title cannot be blank', -1);
@@ -173,7 +174,7 @@ jQuery.fn.newPostForm = function(title, url){
 			}		
 		});	
 	});
-	$(selector).text('').append(display_url).append(name_input).append(tag_tokens).append(review_input).append(submit_button);			
+	$(selector).text('').append(name_input).append(review_input).append(tag_tokens).append(submit_button);			
 	
 }
 

@@ -378,25 +378,31 @@ input, textarea{
 }
 
 #add_new_instruction{
-	clear: both;
-	float: left;
+/*	clear: both;*/
 	font-size: 125%;
 	font-weight: bold;
-	width: 100%;
 	color: #555;
 	margin-bottom: 10px;
+	display: inline-block;
+	width: 120px;
+}
+
+
+#add-new-form-wrapper{
+	margin: 15px 0px;
+/*	float: left;*/
+/*	clear: both;*/
 }
 
 #add_new_form{
 	float:left;	
-	padding-left: 10px;
 /*	border: solid 2px #aaa;*/
-	margin-left: 20px;
-	padding: 10px;
+	margin-left: 20px;	
+	padding: 30px;
 	width: 300px;
 }
 
-#add_new_form > input, textarea{
+#add_new_form > input{
 	float:left;
 	margin: 5px;
 	padding: 5px;
@@ -404,10 +410,19 @@ input, textarea{
 	border: solid 1px #aaa;
 }
 
+#add_new_form > textarea{
+	float:left;
+	margin: 5px;
+	padding: 5px;
+	width: 270px;
+	border: solid 1px #aaa;
+}
+
+
 .input_hint{
 /*	clear: both;*/
 /*	float: left;*/
-	font-size: 75%;
+	font-size: 95%;
 	color: #777;
 	margin-top: -2px;
 	margin-left: 5px;

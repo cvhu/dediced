@@ -761,7 +761,8 @@ a.dislike{
 
 #go_button{
 	border-radius: 3px;
-	float: left;
+/*	float: left;*/
+	display: inline-block;
 	font-size: 150%;
 	margin: 5px;
 	padding: 5px;
@@ -789,10 +790,11 @@ a.dislike{
 }
 
 #post_url{
-	float: left;
+/*	float: left;*/
+	display: inline-block;
 	margin: 5px;
 	padding: 5px;
-	width: 80%;
+	width: 250px;
 	border: solid 1px #bbb;
 }
 

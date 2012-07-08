@@ -75,7 +75,9 @@ li.token-input-input-token-dealicious {
 
 div.token-input-dropdown-dealicious {
     z-index: 999;
-    position: absolute;
+/*	float: left;*/
+/*    position: relative;*/
+	margin-top: -50px;
     width: 300px;
 	padding: 0px;
     background-color: #fff;

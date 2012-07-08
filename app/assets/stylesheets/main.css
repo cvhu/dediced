@@ -2392,3 +2392,17 @@ body{
 #admin tr:nth-child(odd){
 	background: #eee;
 }
+
+#post_create_button{
+	display: inline-block;
+	clear: both;
+	margin: 5px auto;
+	text-align: center;
+	width: 60px;
+	font-size: 120%;
+	font-weight: bold;
+	padding: 5px 7px;
+	background: #0f7;
+	color: white;
+	border-radius: 5px;
+}
