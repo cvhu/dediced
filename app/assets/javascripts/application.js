@@ -2230,8 +2230,8 @@ function signUp(selector){
 		var form = $('<div id="sign-up-wrapper"></div>').appendTo(wrapper);
 		var title = $('<div class="title">Sign up to join us!</div>').prependTo(wrapper);
 		var email_div = $('<div class="label-prepopulate sign-up-field"></div>').appendTo(form);
-		var email_label = $('<label for="email"></label>').text('Email').appendTo(email_div);
-		var email_input = $('<input id="email" name="email" type="text">').appendTo(email_div);
+		// var email_label = $('<label for="email"></label>').text('Email').appendTo(email_div);
+		var email_input = $('<input id="email" name="email" type="text">').appendTo(email_div).prepopulateElement('Email');
 		var submit = $('<input class="sign-up-submit-button" name="commit" type="submit" value="sign up">').appendTo(form);
 		$(email_div).labelPrepopulate();
 		$(submit).click(function(e){
