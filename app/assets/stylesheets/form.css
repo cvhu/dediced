@@ -402,6 +402,11 @@ input, textarea{
 	width: 300px;
 }
 
+#new_post_form > *{
+	float: left !important;
+	clear: both !important;
+}
+
 #add_new_form > input{
 	float:left;
 	margin: 5px;
