@@ -1,3 +1,42 @@
+= Meeting 8/6 =
+* Marcos
+** Upcoming new blog posts
+** User testing on Bookmarklet
+
+
+* Vic
+3** Blog formatting (2/1)
+4** Blog editing (1/2)
+
+1** Fix bugs 'share' (3/1)
+2** Bookmarklets (3/2)
+4** Alpha layout (1/3)
+1** API clean-up (3/1)
+
+8/8: 1
+8/11: 2,3
+8/13: 4
+
+** Collection (ToRead list)
+** Feed Bots (HN, tweeter)
+** Area suggestion (word frequency, blacklist)
+
+
+= Meeting 7/26 =
+* Dediced Blog authentication 
+* Dediced Blog individual page
+* FAQ
+
+ToDos: 
+* Marcos:
+** Testing on Bookmarklets (Pinterest users)
+** Blog posts in pdf format
+* Vic:
+** Working on Bookmarklets
+** Transcribing blog posts
+** Better Dediced 
+** 
+
 * Dediced Blog:
 ** WYSIWYG
 **

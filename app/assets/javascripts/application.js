@@ -2348,7 +2348,10 @@ $(document).ready(function() {
 	// 	$(wrapper).prepareSubscribe();
 	// 	openDialogWithoutClone($(wrapper));				
 	// });
-	
+	// var bookmarklet_url = 'http://assets.pinterest.com/js/pinmarklet.js';
+	var bookmarklet_url = 'http://0.0.0.0:3000/dicemarklet.js'
+	var bookmarklet = $('<a></a>').html('button').attr('href',"javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','"+bookmarklet_url+"?r='+Math.random()*99999999);document.body.appendChild(e)})());");
+	// $(bookmarklet).appendTo('#head-bar-wrapper');
 	
 
 	
@@ -2961,35 +2964,13 @@ jQuery.fn.refreshRateButtons = function(yum_id, self_rating){
 //= Share =
 function shareYum(yum_id){
 	var dialog = $("#dialog_wrapper").clone();
-	$(dialog).addClass("dialog");
-
-	var wrapper = $('<div id="dialog"></div>');
+	var wrapper = $('<div id="share-wrapper"></div>');
 	$(dialog).append(wrapper);
-	$(wrapper).append($('<a href="#" class="cancel">[x]</a>'));
-	$(wrapper)
-		.find('.ok, .cancel')
-		.live('click', function(){
-			closeYumDialog(this);
-		})
-		.end()
-		.find('.ok')
-		.live('click', function(){
-		})
-		.end()
-		.find('.cancel')
-		.live('click', function(){
-	});
-	$(dialog).show()
-		.appendTo("#overlay")
-		.parent()
-		.fadeIn('fast');
-	$(".dialog").show();
-	
 	var share_div = $('<div id="share-div"></div>').appendTo(wrapper);
-	var field_div = $('<div id="share-field-div" class="label-prepopulate"></div>').appendTo(share_div);
-	var label = $('<label></label>').html('email').appendTo(field_div);
-	var field = $('<input type="text" id="share-field"/>').appendTo(field_div);
-	$(field_div).labelPrepopulate()
+	$(share_div).append($('<a href="#" class="cancel">[x]</a>'));
+	// var field_div = $('<div id="share-field-div" class="label-prepopulate"></div>').appendTo(share_div);
+	var field = $('<input type="text" id="share-field" placeholder="email"/>').appendTo(share_div);
+	// $(field_div).labelPrepopulate()
 	var add = $('<a id="share-add-button" href="#"></a>').html('send').appendTo(share_div);
 	var view = $('<div id="share-view"></div>').appendTo(share_div);
 	$(add).click(function(e){
@@ -2999,6 +2980,30 @@ function shareYum(yum_id){
 		$(field).val('');
 		$(share_to).sendShareEmail(yum_id);
 	})
+	
+	$(dialog)
+		.find('.ok, .cancel')
+		.live('click', function(){
+			closeDialog(this);
+		})
+		.end()
+		.find('.ok')
+		.live('click', function(){
+		})
+		.end()
+		.find('.cancel')
+		.live('click', function(){
+	});
+	
+	$(dialog)
+		.addClass('dialog')
+		.show()
+		.appendTo('#overlay')
+		.parent()
+		.fadeIn('fast')
+		.find(".dialog")
+		.show();
+	
 }
 
 jQuery.fn.sendShareEmail = function(yum_id){

@@ -69,7 +69,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
-    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -163,7 +162,6 @@ DEPENDENCIES
   geocoder
   htmlentities
   jquery-rails
-  mysql2
   nokogiri
   pg
   rails (= 3.1.1)

@@ -31,13 +31,14 @@ background: #fff;">
 				margin-right: auto;
 				margin-top: 10px;
 				margin-bottom: 10px; color: #555">
-						<p>You are just one more step to a complete Dediced experience!
-						<p>
-							Please click <a href="<%=@url%>">here</a> to confirm your sign-up!
+				
+						<p>Hi <%=@email%>,</p>
+						<p><%= "#{@user.name} (#{@user.email})"%> just shared <a href="<%= "http://dediced.com/p/#{@yum.get_token}"%>"> <%= @yum.name%></a> with you!
+
 						</p>
 						<br>
-						<p> Congratulations! <p>
-						<p> The Dediced team</p>
+						<p> Enjoy! <p>
+						<p> Dediced sharing service</p>
 				</div>
 				<div id="message_footer" style="color: #aaa;
 				font-weight: bold;

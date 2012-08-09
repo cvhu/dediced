@@ -1914,8 +1914,12 @@ body{
 	display: inline-block;
 	background: #0ad;
 	color: #fff;
-	margin: 10px 3px;
+	margin: 0px 3px;
 	padding: 5px;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 120%;
+	padding: 10px;
 	vertical-align: top;
 	line-height: 100%;
 }
@@ -1932,10 +1936,20 @@ body{
 	width: 220px !important;
 }
 
+#share-wrapper{
+	width: 400px;
+}
+
 #share-div{
-	margin: 10px 0px;
+	position: absolute;
+	background: #fff;
+	border-radius: 10px;
+	border: 2px solid #eee;
+	left: -50%;
+	padding: 50px;
+	margin: 200px auto;
 	width: 300px;
-/*	height: 300px;	*/
+/*	height: 200px;	*/
 }
 
 .share-to{
