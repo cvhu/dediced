@@ -373,7 +373,7 @@ class User < ActiveRecord::Base
   
   def updatePassword(password)
     self.update_attribute(:password_salt, BCrypt::Engine.generate_salt) 
-    self.update_attribute(:password_hash, BCrypt::Engine.hash_secret(password, self.password_salt)
+    self.update_attribute(:password_hash, BCrypt::Engine.hash_secret(password, self.password_salt))
   end
   
   
