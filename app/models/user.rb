@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :authorities, :dependent => :destroy
   has_many :interests, :dependent => :destroy
     
-  attr_accessible :email, :password, :password_confirmation, :name, :address, :longitude, :latitude, :gravatar, :signup_token, :fb_access_token, :login_salt
+  attr_accessible :email, :password, :password_confirmation, :name, :address, :longitude, :latitude, :gravatar, :signup_token, :fb_access_token, :login_salt, :first_name, :last_name
   
   attr_accessor :password
   before_save :encrypt_password
@@ -334,11 +334,14 @@ class User < ActiveRecord::Base
   
   
   
+  # Dediced 2.0
+  
+  
   def buildToken
     self.update_attribute(:token, Digest::MD5.hexdigest(self.login_salt, self.email.downcase))
   end
   
-  def update_login
+  def updateLoginSalt
     list = [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten
     self.update_attribute(:login_salt, (0...15).map{list[rand(list.length)]}.join)
     self.buildToken
@@ -349,23 +352,28 @@ class User < ActiveRecord::Base
     self.update_attribute(:signup_token, (0...15).map{list[rand(list.length)]}.join)
   end
   
-  def reset_token
+  def resetToken
     self.update_attribute(:login_salt, nil)
     self.update_attribute(:token, nil)
   end
   
-  def getUsername
-    if self.username.nil?
+  def getName
+    if self.name.nil?
       name = self.first_name.downcase
       username = name
       count = 0
-      while not User.where(:username => username).empty?
+      while not User.where(:name => username).empty?
         count += 1
         username = "#{name}-#{count}"
       end
-      self.update_attribute(:username, username)
+      self.update_attribute(:name, username)
     end
-    return self.username
+    return self.name
+  end
+  
+  def updatePassword(password)
+    self.update_attribute(:password_salt, BCrypt::Engine.generate_salt) 
+    self.update_attribute(:password_hash, BCrypt::Engine.hash_secret(password, self.password_salt)
   end
   
   

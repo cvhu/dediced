@@ -173,4 +173,56 @@ class UsersController < ApplicationController
       format.json {render :json => {:strengths => @user.authorities.order('score DESC')[0..2].map{|a| {:area => a.tag.name, :score => a.score}}, :interests => @user.interests.order('score DESC')[0..2].map{|i| {:area => i.tag.name, :score => i.score}}}.to_json}
     end
   end
+  
+  
+  # Dediced 2.0
+  
+  
+  
+  #   http://api.dediced.com/api/users/fb_signin?access_token=AAAFz21FOd1YBAM4AE2kWbPbhnS4e7cSPQ22vGBpZBZCnyzmYMIHZBzYPWIGSTNC02CIP7h0ATGHwRGTdMstZCqiu1MTdVBlMPwa6gYathWqVkZBKFEqZB7&expires_in=3975&id=100000698352955&name=Peter+Parker&first_name=Peter&last_name=Parker&link=http%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100000698352955&gender=male&email=ch8.portable%40gmail.com&timezone=-5&locale=en_US&updated_time=2011-12-24T23%3A49%3A58%2B0000
+
+  def fbSigninAPI
+    obj = {}
+    users = User.where(:email => params[:email].downcase)
+    unless users.empty?
+      user = users.first
+      user.update_attribute(:fb_access_token, params[:access_token])
+      # user.update_attribute(:fb_access_expiration, Time.now+params[:expires_in].to_i)
+      # user.update_attribute(:fb_profile_id, params[:id])
+      user.update_login
+      obj[:status] = 'success'
+      obj[:message] = 'Your facebook account is now connected'
+      obj[:token] = user.token      
+    else
+      user = User.new
+      user.email = params[:email].downcase
+      user.first_name = params[:first_name]
+      user.last_name = params[:last_name]
+      user.fb_access_token = params[:access_token]
+      # user.fb_access_expiration = Time.now+params[:expires_in].to_i
+      user.fb_profile_id = params[:id]
+      user.save
+      
+      user.updatePassword(params[:access_token])
+      user.confirmed = 1
+      if user.save      
+        user.updateLoginSalt
+        # user.buildToken
+        obj[:status] = 'success'
+        obj[:message] = 'Welcome to Souplus!'
+        obj[:token] = user.token
+      else
+        obj[:status] = 'fail'
+        obj[:message] = 'Sorry, somethings went wrong. We will fix it ASAP.'
+      end
+    end
+
+
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end
+
+    # UserMailer.admin_notice('Someone attempts to log in with FB', "Congrats! You've got a new user through facebook: #{user.name} (#{user.email})", "http://souplus.com/@#{user.getUsername}").deliver
+  end
+
 end

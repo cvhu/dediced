@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502154446) do
+ActiveRecord::Schema.define(:version => 20120814023004) do
 
   create_table "authorities", :force => true do |t|
     t.integer  "user_id"
@@ -137,6 +137,12 @@ ActiveRecord::Schema.define(:version => 20120502154446) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "token"
+    t.string   "fb_access_token"
+    t.string   "signup_token"
+    t.string   "login_salt"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "confirmed"
   end
 
   create_table "viewcounts", :force => true do |t|
