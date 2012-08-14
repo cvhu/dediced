@@ -200,7 +200,7 @@ class UsersController < ApplicationController
       user.last_name = params[:last_name]
       user.fb_access_token = params[:access_token]
       # user.fb_access_expiration = Time.now+params[:expires_in].to_i
-      user.fb_profile_id = params[:id]
+      # user.fb_profile_id = params[:id]
       user.save
       
       user.updatePassword(params[:access_token])
