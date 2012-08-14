@@ -108,6 +108,7 @@ Dediced::Application.routes.draw do
   match '/api/users/signup' => 'users#signupAPI'
   match '/api/users/email_exists' => 'users#emailExistsAPI'
   match '/api/users/:token/create' => 'users#createAPI'
+  match '/api/users/fb_signin' => 'users#fbSigninAPI'
   
   ################## Dediced v0.7.0
   match "/@:user_name" => "Users#show", :as => "user_profile"
