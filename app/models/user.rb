@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :notifications, :dependent => :destroy
   has_many :viewcounts, :dependent => :destroy
   has_many :yum_interests, :dependent => :destroy
+  has_many :contacts, :dependent => :destroy
   
   has_many :authorities, :dependent => :destroy
   has_many :interests, :dependent => :destroy

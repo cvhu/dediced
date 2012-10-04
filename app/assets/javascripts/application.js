@@ -2972,6 +2972,17 @@ function shareYum(yum_id){
 	// var field_div = $('<div id="share-field-div" class="label-prepopulate"></div>').appendTo(share_div);
 	var field = $('<input type="text" id="share-field" placeholder="email"/>').appendTo(share_div);
 	// $(field_div).labelPrepopulate()
+	$.ajax({
+		url: '/api/users/contacts.json?user_id='+$('#user-profile').attr('user_id'),
+		dataType: 'json',
+		beforeSend: function(){
+			$(field).attr('placeholder', 'loading...');
+		},
+		success: function(obj){
+			$(field).attr('placeholder', 'Share to an email');
+			$(field).autocomplete({source:obj.data});
+		}
+	})
 	var add = $('<a id="share-add-button" href="#"></a>').html('send').appendTo(share_div);
 	var view = $('<div id="share-view"></div>').appendTo(share_div);
 	$(add).click(function(e){

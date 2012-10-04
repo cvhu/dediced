@@ -115,7 +115,11 @@ class UsersController < ApplicationController
   def sendShareEmail
     @user = current_user
     @yum = Yum.find(params[:yum_id])
-    @email = params[:email]
+    @email = params[:email].downcase
+    cs = @user.contacts.where(:email => @email)
+    if cs.empty?
+      Contact.create(:user_id => @user.id, :email => @email)
+    end
     @subject = "[Dediced.com] #{@user.name} shared '#{@yum.name}' with you"
     UserMailer.share_post(@email, @subject, @yum, @user).deliver
     respond_to do |format|
@@ -318,5 +322,37 @@ class UsersController < ApplicationController
     end
     
   end
+  
+  
+  def contactsAPI
+    obj = {}
+    if not params[:token].nil?
+      user = User.find_by_token(params[:token])
+      if user.nil?
+        obj[:status] = 'fail'
+        obj[:message] = 'invalid user token'
+      else
+        obj[:status] = 'success'
+        obj[:data] = user.contacts.map{|c| c.email}
+      end
+    elsif not params[:user_id].nil?
+      user = User.find_by_id(params[:user_id])
+      if user.nil?
+        obj[:status] = 'fail'
+        obj[:message] = 'invalid user id'
+      else
+        obj[:status] = 'success'
+        obj[:data] = user.contacts.map{|c| c.email}
+      end
+    else
+      obj[:status] = 'fail'
+      obj[:message] = 'user_id or token required'
+    end
+    
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end
+  end
+        
 
 end
