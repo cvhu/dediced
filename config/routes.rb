@@ -104,11 +104,10 @@ Dediced::Application.routes.draw do
   match "/new" => "Yums#new_test"
   
   
-  ################## Dediced 2.0
-  match '/api/users/signup' => 'users#signupAPI'
-  match '/api/users/email_exists' => 'users#emailExistsAPI'
-  match '/api/users/:token/create' => 'users#createAPI'
-  match '/api/users/fb_signin' => 'users#fbSigninAPI'
+
+  
+  
+
   
   ################## Dediced v0.7.0
   match "/@:user_name" => "Users#show", :as => "user_profile"
@@ -155,6 +154,18 @@ Dediced::Application.routes.draw do
   match "/api/search" => "indexes#searchAPI"
   
   match "/api/keywords/search" => "indexes#keywordSearchAPI"
+  
+  
+  
+  
+  ################## Dediced 2.0  
+  match '/api/users/fb_login' => 'users#fbLoginAPI'
+  match '/api/users/:token/avatar' => 'users#avatarAPI'
+  match '/api/users/signup' => 'users#signupAPI'
+  match '/api/users/login' => 'users#loginAPI'
+  match '/api/users/logout' => 'users#logoutAPI'
+  
+  match '/api/yums' => 'yums#indexAPI'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

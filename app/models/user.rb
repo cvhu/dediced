@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
   end
     
   require 'bcrypt'
+  def authenticate(password)
+    self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
+  end
+  
   def self.authentication(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -336,12 +340,18 @@ class User < ActiveRecord::Base
   
   # Dediced 2.0
   
+  def api
+    {
+      :fullname => self.getFullname,
+      :name => self.getName
+    }
+  end
   
   def buildToken
     self.update_attribute(:token, Digest::MD5.hexdigest(self.login_salt, self.email.downcase))
   end
   
-  def updateLoginSalt
+  def updateLogin
     list = [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten
     self.update_attribute(:login_salt, (0...15).map{list[rand(list.length)]}.join)
     self.buildToken
@@ -369,6 +379,14 @@ class User < ActiveRecord::Base
       self.update_attribute(:name, username)
     end
     return self.name
+  end
+  
+  def getFullname
+    if self.first_name.nil? or self.last_name.nil?
+      return self.name
+    else
+      return "#{self.first_name.capitalize} #{self.last_name[0].capitalize}."
+    end
   end
   
   def updatePassword(password)

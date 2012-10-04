@@ -178,18 +178,90 @@ class UsersController < ApplicationController
   # Dediced 2.0
   
   
+  def loginAPI
+    user = User.find_by_email(params[:email].downcase)
+    obj = {}
+    unless user.nil?      
+      if user.authenticate(params[:password])
+        user.updateLogin
+        obj[:status] = 'success'
+        obj[:token] = user.token
+        obj[:user_api] = user.api
+        obj[:message] = "Welcome to Dediced, #{user.getName}!"
+        puts 'log in success'
+      else
+        obj[:status] = 'fail'
+        obj[:message] = 'Sorry, but it seems like you got the wrong password.'    
+      end    
+    else
+      obj[:status] = 'fail'
+      obj[:message] = 'Sorry, but the email you entered has not been signed up yet.'
+      puts 'log in fail'
+    end
+    
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end
+  end
   
+  def logoutAPI
+    user = User.find_by_token(params[:token])
+    if user.nil?
+      obj = {:status => 'fail'}
+    else
+      obj = {:status => 'success'}    
+      user.resetToken
+    end
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end    
+  end
+    
+  def signupAPI
+    obj = {}
+    email = params[:email].downcase
+    unless User.where(:email => email).empty?
+      obj[:status] = 'fail'
+      obj[:message] = 'Sorry, but this email has already been used.'
+    else
+      user = User.new
+      user.email = email
+      user.first_name = params[:first_name]
+      user.last_name = params[:last_name]
+      user.password = params[:password]
+      user.password_confirmation = params[:password_confirmation] 
+      if user.save      
+        user.updateLogin
+        obj[:status] = 'success'
+        obj[:message] = "Welcome to Dediced, #{user.getName}"
+        obj[:token] = user.token        
+        obj[:user_api] = user.api
+      else
+        obj[:status] = 'fail'
+        obj[:message] = 'Sorry, something went wrong. We will fix it ASAP.'
+      end
+    end
+    
+    respond_to do |format|      
+      format.json {render :json => obj.to_json}
+    end
+    # UserMailer.admin_notice('Someone just finished signing up on Souplus!', "Congrats! You've got a new user: #{user.name} (#{user.email})", "http://souplus.com/@#{user.getUsername}").deliver    
+  end
+  
+    
   #   http://api.dediced.com/api/users/fb_signin?access_token=AAAFz21FOd1YBAM4AE2kWbPbhnS4e7cSPQ22vGBpZBZCnyzmYMIHZBzYPWIGSTNC02CIP7h0ATGHwRGTdMstZCqiu1MTdVBlMPwa6gYathWqVkZBKFEqZB7&expires_in=3975&id=100000698352955&name=Peter+Parker&first_name=Peter&last_name=Parker&link=http%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100000698352955&gender=male&email=ch8.portable%40gmail.com&timezone=-5&locale=en_US&updated_time=2011-12-24T23%3A49%3A58%2B0000
 
-  def fbSigninAPI
+  def fbLoginAPI
     obj = {}
     users = User.where(:email => params[:email].downcase)
     unless users.empty?
       user = users.first
       user.update_attribute(:fb_access_token, params[:access_token])
+      user.update_attribute(:first_name, params[:first_name])
+      user.update_attribute(:last_name, params[:last_name])
       # user.update_attribute(:fb_access_expiration, Time.now+params[:expires_in].to_i)
       # user.update_attribute(:fb_profile_id, params[:id])
-      user.update_login
+      user.updateLogin
       obj[:status] = 'success'
       obj[:message] = 'Your facebook account is now connected'
       obj[:token] = user.token      
@@ -206,7 +278,7 @@ class UsersController < ApplicationController
       user.updatePassword(params[:access_token])
       user.confirmed = 1
       if user.save      
-        user.updateLoginSalt
+        user.updateLogin
         # user.buildToken
         obj[:status] = 'success'
         obj[:message] = 'Welcome to Souplus!'
@@ -223,6 +295,28 @@ class UsersController < ApplicationController
     end
 
     # UserMailer.admin_notice('Someone attempts to log in with FB', "Congrats! You've got a new user through facebook: #{user.name} (#{user.email})", "http://souplus.com/@#{user.getUsername}").deliver
+  end
+  
+  def avatarAPI
+    obj = {}
+    if params[:token]
+      user = User.find_by_token(params[:token])
+      unless user.nil?
+        obj[:status] = 'success'
+        obj[:data] = user.api
+      else
+        obj[:status] = 'fail'
+        obj[:message] = 'Wrong token'
+      end      
+    else
+      obj[:status] = 'fail'
+      obj[:message] = 'Token required'
+    end
+
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end
+    
   end
 
 end

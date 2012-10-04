@@ -1751,10 +1751,6 @@ body{
 }
 
 
-.loading-icon:before{
-	content: 'R';
-}
-
 
 .link-icon:before{
 	content: '>';

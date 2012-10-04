@@ -302,4 +302,11 @@ class YumsController < ApplicationController
   end
   
   
+  
+  
+  
+  # Dediced 2.0
+  # def indexAPI
+    
+  
 end
