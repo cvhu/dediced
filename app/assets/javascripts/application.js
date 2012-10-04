@@ -2631,6 +2631,7 @@ jQuery.fn.loadYumProfile = function(token){
 			var share = $('<a href="#" id="yum-profile-share"></a>').html('<span class="icon share-icon icon"></span> Share').appendTo(tool);
 			$(share).click(function(e){
 				e.preventDefault();
+				$("#overlay").find('#add_new_wrapper').remove();
 				shareYum(data.yum.id);				
 			})
 			
