@@ -2552,7 +2552,7 @@ jQuery.fn.loadYumCover = function(api){
 }
 
 function slideOverToYumProfile(token){
-	$("#stream-wrapper").hide('slide', {direction:'left'}, 500);
+	$("#stream-wrapper").fadeOut();//hide('slide', {direction:'left'}, 500);
 	$("#content-wrapper").showYumProfile(token);
 	var path = '/p/'+token;
 	history.pushState({url: path}, path, path);
@@ -2575,7 +2575,7 @@ jQuery.fn.showYumProfile = function(token){
 		// $(yum_profile).hide('slide', {direction:'right'}, 500).remove();
 		$(yum_profile).fadeOut('slow').delay(500).remove();
 		$(this).remove();
-		$('#stream-wrapper').show('slide', {direction:'left'}, 500);				
+		$('#stream-wrapper').fadeIn();//.show('slide', {direction:'left'}, 500);				
 		// $('#stream').delay(500).fadeIn();
 		$("#search-relevant-areas").fadeIn();
 	});
