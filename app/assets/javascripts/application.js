@@ -101,14 +101,16 @@ jQuery.fn.newPost = function(){
 jQuery.fn.newPostForm = function(title, url){
 	var selector = this;
 	// var display_url = $('<div id="display_url"></div>').text(url);
-	var name_input = $('<input id="post_name" name="yum[name]" size="40" type="text" />').val(title);
+	var title_limit = 80;
+	var name_input = $('<input id="post_name" name="yum[name]" size="40" type="text" />').val(title.substring(0, title_limit));
 	$(name_input).prepopulateElement("Post Title");
 	$(name_input).populateInputHint('title cannot be blank', -1);
 	$(name_input).blur(function(){
 		$(this).defineRequired('enter a name');
 	});
 	$(name_input).keyup(function(){
-		$(this).validatesLength(40);
+		$(this).validatesLength(title_limit);
+		$('#text_cover .page_title').text($(this).val());
 	});
 	
 	var tag_tokens = $('<input data-pre="[]" id="tag_tokens" name="yum[tag_tokens]" size="30" type="text" />');
