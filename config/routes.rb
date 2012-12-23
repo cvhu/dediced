@@ -166,7 +166,7 @@ Dediced::Application.routes.draw do
   match '/api/users/logout' => 'users#logoutAPI'
   match '/api/users/contacts' => 'users#contactsAPI'
   
-  match '/api/yums' => 'yums#indexAPI'
+  match '/api/links' => 'yums#indexAPI'
   
   
   # The priority is based upon order of creation:

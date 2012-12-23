@@ -113,6 +113,14 @@ class Yum < ActiveRecord::Base
   
   include ActionView::Helpers::DateHelper    
   
+  def api2
+    {
+      :created_at => time_ago_in_words(self.created_at),
+      :name => self.name,
+      :url => self.url
+    }
+  end
+  
   def api(user_id)    
     jsonData = {
       :yum => {:id => self.id, :user_id => self.user_id, :review => self.review, :created_at => time_ago_in_words(self.created_at), :name => self.name, :url => self.url, :token => self.get_token}, 

@@ -2351,6 +2351,8 @@ $(document).ready(function() {
 	// 	openDialogWithoutClone($(wrapper));				
 	// });
 	// var bookmarklet_url = 'http://assets.pinterest.com/js/pinmarklet.js';
+	$('<div id="message-wrapper"></div>').html('There is currently a permission issue with our database provider.').prependTo('#container');
+	
 	var bookmarklet_url = 'http://0.0.0.0:3000/dicemarklet.js'
 	var bookmarklet = $('<a></a>').html('button').attr('href',"javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','"+bookmarklet_url+"?r='+Math.random()*99999999);document.body.appendChild(e)})());");
 	// $(bookmarklet).appendTo('#head-bar-wrapper');

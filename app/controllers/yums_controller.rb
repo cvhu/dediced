@@ -307,6 +307,21 @@ class YumsController < ApplicationController
   
   # Dediced 2.0
   # def indexAPI
+  
+  def indexAPI
+    obj = {}
+    @links = Yum.order('created_at asc')
+    unless params[:offset].nil?
+      @links = @links.offset(params[:offset])
+    end
+    unless params[:limit].nil?
+      @links = @links.offset(params[:limit])
+    end
+    obj[:data] = @links.map{|y| y.api2}
+    respond_to do |format|
+      format.json {render :json => obj.to_json}
+    end
+  end
     
   
 end
