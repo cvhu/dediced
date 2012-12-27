@@ -315,13 +315,14 @@ class YumsController < ApplicationController
       @links = @links.offset(params[:offset])
     end
     unless params[:limit].nil?
-      @links = @links.offset(params[:limit])
+      @links = @links.limit(params[:limit])
     end
     obj[:data] = @links.map{|y| y.api2}
     respond_to do |format|
       format.json {render :json => obj.to_json}
     end
   end
-    
+  
+       
   
 end

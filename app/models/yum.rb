@@ -113,8 +113,18 @@ class Yum < ActiveRecord::Base
   
   include ActionView::Helpers::DateHelper    
   
+  require 'open-uri'
+  require 'nokogiri'
+  
+  def img_src
+    url = URI::escape("http://www.google.com/search?q=#{self.name}&tbm=isch")
+    doc = Nokogiri::HTML(open(url))
+    return doc.css('img').first['src']
+  end
+  
   def api2
     {
+      :img => self.img_src,
       :created_at => time_ago_in_words(self.created_at),
       :name => self.name,
       :url => self.url
