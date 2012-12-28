@@ -310,12 +310,12 @@ class YumsController < ApplicationController
   
   def indexAPI
     obj = {}
-    @links = Yum.order('created_at asc')
+    @links = Yum.order('created_at desc')
     unless params[:offset].nil?
-      @links = @links.offset(params[:offset])
+      @links = @links.offset(params[:offset].to_i)
     end
     unless params[:limit].nil?
-      @links = @links.limit(params[:limit])
+      @links = @links.limit(params[:limit].to_i)
     end
     obj[:data] = @links.map{|y| y.api2}
     respond_to do |format|
