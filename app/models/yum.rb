@@ -118,14 +118,18 @@ class Yum < ActiveRecord::Base
   
   def img_src
     url = URI::escape("http://www.google.com/search?q=#{self.name}&tbm=isch")    
-    doc = Nokogiri::HTML(open(url))
-    return doc.css('img').first['src']
+    begin
+      doc = Nokogiri::HTML(open(url))
+      return doc.css('img').first['src']
+    rescue
+      return nil
+    end    
   end
   
   def api2
     {
       :id => self.id,
-      # :img => self.img_src,
+      :img => self.img_src,
       :created_at => time_ago_in_words(self.created_at),
       :name => self.name,
       :url => self.url
