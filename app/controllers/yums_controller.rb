@@ -304,10 +304,10 @@ class YumsController < ApplicationController
   
   
   
-  
+  # ===========================================  
   # Dediced 2.0
   # def indexAPI
-  
+
   def indexAPI
     obj = {}
     @links = Yum.order('created_at desc')
@@ -323,6 +323,37 @@ class YumsController < ApplicationController
     end
   end
   
-       
+  def createAPI
+    respond_to do |format|
+      format.json {render :json => Yum.xdhttp('http://'+params[:url])}
+    end
+  end
   
+  def googleImgsAPI
+    respond_to do |format|
+      format.json{render :json => Yum.googleImgs(params[:name])}
+    end
+  end
+
+
+
+  ############ Transferring ############
+  def packageAPI
+    obj = {}
+    user = User.find_by_email(params[:email].downcase)
+    if user.nil?
+      obj[:status] = 'fail'
+      obj[:message] = 'email not found'
+    else
+      obj[:status] = 'success'
+      obj[:data] = user.yums.map{|y| y.api3}
+    end
+
+    respond_to do |format|
+      format.json{render :json => obj.to_json}
+    end
+  end
+
+
+    
 end

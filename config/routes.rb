@@ -167,7 +167,11 @@ Dediced::Application.routes.draw do
   match '/api/users/contacts' => 'users#contactsAPI'
   
   match '/api/links' => 'yums#indexAPI'
+  match '/api/links/create' => 'yums#createAPI'
+  match '/api/links/google_imgs' => 'yums#googleImgsAPI'
   
+  ###### Transferring #######
+  match '/api/links/package' => 'yums#packageAPI'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

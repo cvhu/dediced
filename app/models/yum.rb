@@ -116,7 +116,7 @@ class Yum < ActiveRecord::Base
   require 'open-uri'
   require 'nokogiri'
   
-  def img_src
+  def img_search
     url = URI::escape("http://www.google.com/search?q=#{self.name}&tbm=isch")    
     begin
       doc = Nokogiri::HTML(open(url))
@@ -126,13 +126,67 @@ class Yum < ActiveRecord::Base
     end    
   end
   
+  def self.xdhttp(url)
+    obj = {}
+    imgs = []
+    begin
+      doc = Nokogiri::HTML(open(url))
+      title = doc.at_css("title").text
+      doc.css("img").each do |img|
+        imgs << img.attr('src')
+      end
+      obj[:status] = 'success'
+    rescue
+      obj[:status] = 'fail'
+      title = url
+      imgs = []
+    end    
+    obj[:data] = {
+      :id => nil,
+      :img => imgs.first,
+      :created_at => Time.now,
+      :url => url,
+      :name => title,
+      :imgs => imgs
+    }
+    return obj
+  end
+  
+  def self.googleImgs(name)
+    obj = {}
+    imgs = []    
+    url = URI::escape("http://www.google.com/search?q=#{name}&tbm=isch")
+    begin
+      doc = Nokogiri::HTML(open(url))
+      doc.css("img").each do |img|
+        imgs << img.attr('src')
+      end
+      obj[:status] = 'success'
+      obj[:data] = imgs
+    rescue
+      obj[:status] = 'fail'
+    end
+    
+    return obj
+    
+  end
+  
   def api2
     {
       :id => self.id,
-      :img => self.img_src,
+      :img => self.img_search,
       :created_at => time_ago_in_words(self.created_at),
       :name => self.name,
       :url => self.url
+    }
+  end
+
+  def api3
+    return {
+      :url => self.url.gsub("http://",""),
+      :note => self.review,
+      :created_at => self.created_at,
+      :title => self.name
     }
   end
   
